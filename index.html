@@ -13,8 +13,8 @@
       --bd: #2e3d6e;
       --tx: #e8eaf6;
       --t2: #8892b0;
-      --ac: #1677ff;
-      --a2: #4facfe;
+      --ac: #2b7fff;
+      --a2: #6aacff;
       --gr: #10b981;
       --rd: #ef4444;
       --yl: #f59e0b;
@@ -31,8 +31,8 @@
     }
     #root { min-height: 100vh; }
 
-    /* Header */
-    .header {
+    /* ── Header Row 1 ── */
+    .header1 {
       height: 56px;
       background: var(--sf);
       border-bottom: 1px solid var(--bd);
@@ -44,47 +44,163 @@
       top: 0;
       z-index: 100;
     }
-    .header-logo {
-      font-size: 18px;
+    .header1-logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--ac);
+      color: #fff;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--ac);
-      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .header-divider {
-      width: 1px;
-      height: 20px;
-      background: var(--bd);
-    }
-    .header-subtitle {
-      font-size: 13px;
-      color: var(--t2);
-      font-weight: 500;
-    }
-    .header-company {
-      margin-left: auto;
-      font-size: 13px;
-      color: var(--a2);
+    .header1-title {
+      font-size: 16px;
       font-weight: 600;
+      color: var(--tx);
     }
-    .header-logo-img {
+    .header1-logo-img {
       height: 28px;
       object-fit: contain;
     }
+    .header1-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    /* Segmented lens control */
+    .lens-seg {
+      display: flex;
+      gap: 0;
+    }
+    .lens-seg-btn {
+      padding: 5px 12px;
+      border: 1px solid var(--bd);
+      background: var(--s2);
+      color: var(--t2);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .lens-seg-btn:first-child { border-radius: 4px 0 0 4px; }
+    .lens-seg-btn:last-child  { border-radius: 0 4px 4px 0; }
+    .lens-seg-btn:not(:last-child) { border-right: none; }
+    .lens-seg-btn.active { background: var(--ac); border-color: var(--ac); color: #fff; }
+    /* AI Value toggle label */
+    .ai-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .ai-toggle-label span {
+      font-size: 12px;
+    }
+    /* admin escape button */
+    .admin-escape-btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--bd);
+      background: transparent;
+      color: var(--t2);
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .admin-escape-btn:hover { color: var(--tx); border-color: var(--tx); }
 
-    /* Tab nav */
+    /* ── Header Row 2 (toolbar) ── */
+    .header2 {
+      height: 52px;
+      background: var(--sf);
+      border-bottom: 1px solid var(--bd);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 24px;
+    }
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--t2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .toolbar-input {
+      width: 180px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      color: var(--tx);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+    .toolbar-input:focus { border-color: var(--ac); }
+    .toolbar-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .toolbar-pill {
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--bd);
+      background: transparent;
+      color: var(--t2);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .toolbar-pill:hover { border-color: var(--ac); color: var(--tx); }
+    .toolbar-pill.active { background: var(--ac); border-color: var(--ac); color: #fff; }
+    .toolbar-version-group {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toolbar-version-input {
+      width: 160px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      color: var(--tx);
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+    }
+    .toolbar-version-input:focus { border-color: var(--ac); }
+
+    /* ── Tab nav ── */
     .tab-nav {
       background: var(--sf);
       border-bottom: 1px solid var(--bd);
       display: flex;
       padding: 0 24px;
-      gap: 0;
       overflow-x: auto;
     }
     .tab-btn {
       background: none;
       border: none;
       color: var(--t2);
-      padding: 12px 18px;
+      padding: 11px 16px;
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
@@ -96,7 +212,7 @@
     .tab-btn:hover { color: var(--tx); }
     .tab-btn.active { color: var(--ac); border-bottom-color: var(--ac); }
 
-    /* Layout */
+    /* ── Main content ── */
     .main {
       max-width: 1400px;
       margin: 0 auto;
@@ -105,628 +221,12 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* Cards */
-    .card {
-      background: var(--sf);
-      border: 1px solid var(--bd);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-    .card-sm {
-      background: var(--s2);
-      border: 1px solid var(--bd);
-      border-radius: 6px;
-      padding: 14px 16px;
-    }
-
-    /* Industry pills */
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .pill {
-      padding: 5px 14px;
-      border-radius: 20px;
-      border: 1px solid var(--bd);
-      background: var(--s2);
-      color: var(--t2);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      transition: all 0.15s;
-      font-family: inherit;
-    }
-    .pill:hover { border-color: var(--ac); color: var(--tx); }
-    .pill.active { background: var(--ac); border-color: var(--ac); color: #fff; }
-
-    /* Form elements */
-    .input-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .field-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 0;
-    }
-    .field-label {
-      flex: 1;
-      font-size: 12px;
-      color: var(--t2);
-      min-width: 0;
-    }
-    .field-label.assumption-label {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .info-btn {
-      background: none;
-      border: none;
-      color: var(--t2);
-      cursor: pointer;
-      font-size: 11px;
-      padding: 0 2px;
-      position: relative;
-    }
-    .info-btn:hover .tooltip { display: block; }
-    .tooltip {
-      display: none;
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e2d50;
-      border: 1px solid var(--bd);
-      border-radius: 6px;
-      padding: 8px 10px;
-      font-size: 11px;
-      color: var(--tx);
-      white-space: nowrap;
-      max-width: 260px;
-      white-space: normal;
-      z-index: 200;
-      width: 220px;
-      line-height: 1.4;
-    }
-    .field-input-wrap {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .field-prefix {
-      font-size: 12px;
-      color: var(--t2);
-      font-family: var(--mono);
-    }
-    input[type="number"], input[type="text"] {
-      background: var(--s2);
-      border: 1px solid var(--bd);
-      border-radius: 4px;
-      color: var(--tx);
-      padding: 4px 8px;
-      font-size: 12px;
-      font-family: var(--mono);
-      width: 100px;
-      text-align: right;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    input[type="number"]:focus, input[type="text"]:focus {
-      border-color: var(--ac);
-    }
-    input[type="number"]:disabled, input[type="text"]:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    input.wide { width: 200px; }
-    .field-suffix {
-      font-size: 11px;
-      color: var(--t2);
-      min-width: 28px;
-    }
-    .field-static {
-      font-size: 12px;
-      color: var(--tx);
-      font-family: var(--mono);
-      min-width: 100px;
-      text-align: right;
-    }
-    .lock-icon { font-size: 10px; color: var(--yl); }
-
-    /* Use case card */
-    .uc-card {
-      background: var(--sf);
-      border: 1px solid var(--bd);
-      border-radius: 8px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: border-color 0.15s;
-    }
-    .uc-card.disabled { opacity: 0.55; }
-    .uc-card:hover { border-color: var(--ac); }
-    .uc-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 16px;
-      cursor: pointer;
-    }
-    .uc-toggle {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--ac);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .uc-name {
-      font-size: 14px;
-      font-weight: 600;
-      flex: 1;
-    }
-    .uc-cat {
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 10px;
-      background: var(--s2);
-      color: var(--t2);
-      border: 1px solid var(--bd);
-    }
-    .uc-cat.revenue-growth { background: rgba(16,185,129,0.15); color: var(--gr); border-color: rgba(16,185,129,0.3); }
-    .uc-cat.revenue-protection { background: rgba(246,173,63,0.15); color: var(--yl); border-color: rgba(246,173,63,0.3); }
-    .uc-cat.cost-savings { background: rgba(99,102,241,0.15); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
-    .sol-chip {
-      font-size: 10px;
-      padding: 1px 7px;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: 500;
-    }
-    .uc-body {
-      padding: 0 16px 16px;
-      border-top: 1px solid var(--bd);
-    }
-
-    /* Steps */
-    .step-block {
-      background: var(--s2);
-      border: 1px solid var(--bd);
-      border-radius: 6px;
-      padding: 12px 14px;
-      margin-top: 10px;
-    }
-    .step-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--t2);
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 8px;
-    }
-    .step-formula {
-      font-size: 11px;
-      color: var(--t2);
-      font-family: var(--mono);
-      margin-top: 6px;
-      padding: 4px 8px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 4px;
-    }
-    .step-result {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--bd);
-    }
-    .step-result-label {
-      font-size: 12px;
-      color: var(--t2);
-    }
-    .step-result-value {
-      font-size: 13px;
-      font-weight: 600;
-      font-family: var(--mono);
-      color: var(--tx);
-    }
-    .step-final-value {
-      font-size: 16px;
-      font-weight: 700;
-      font-family: var(--mono);
-      color: var(--gr);
-    }
-    .step-npv {
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: rgba(22,119,255,0.1);
-      border: 1px solid rgba(22,119,255,0.25);
-      border-radius: 6px;
-    }
-    .step-npv-label {
-      font-size: 11px;
-      color: var(--a2);
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .step-npv-value {
-      font-size: 14px;
-      font-weight: 700;
-      font-family: var(--mono);
-      color: var(--a2);
-    }
-
-    /* AI layer */
-    .ai-section {
-      margin-top: 10px;
-      border-left: 3px solid var(--ac);
-      padding-left: 12px;
-    }
-    .ai-toggle-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      margin-top: 6px;
-    }
-    .ai-badge {
-      font-size: 10px;
-      font-weight: 700;
-      background: rgba(22,119,255,0.2);
-      color: var(--a2);
-      border: 1px solid rgba(22,119,255,0.3);
-      padding: 1px 7px;
-      border-radius: 8px;
-    }
-    .ai-label {
-      font-size: 12px;
-      color: var(--a2);
-      font-weight: 500;
-    }
-    .ai-npv {
-      font-size: 12px;
-      font-family: var(--mono);
-      color: var(--a2);
-      margin-top: 6px;
-    }
-
-    /* Value lens */
-    .lens-row {
-      display: flex;
-      gap: 0;
-      margin-bottom: 20px;
-    }
-    .lens-btn {
-      padding: 6px 16px;
-      border: 1px solid var(--bd);
-      background: var(--s2);
-      color: var(--t2);
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 500;
-      font-family: inherit;
-      transition: all 0.15s;
-    }
-    .lens-btn:first-child { border-radius: 4px 0 0 4px; }
-    .lens-btn:last-child { border-radius: 0 4px 4px 0; }
-    .lens-btn:not(:last-child) { border-right: none; }
-    .lens-btn.active { background: var(--ac); border-color: var(--ac); color: #fff; }
-
-    /* Top controls */
-    .controls-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .controls-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .controls-label {
-      font-size: 11px;
-      color: var(--t2);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* Summary table */
-    .summary-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-    }
-    .summary-table th {
-      text-align: left;
-      padding: 8px 12px;
-      color: var(--t2);
-      font-weight: 600;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 1px solid var(--bd);
-    }
-    .summary-table th.right { text-align: right; }
-    .summary-table td {
-      padding: 8px 12px;
-      border-bottom: 1px solid rgba(46,61,110,0.5);
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-    .summary-table td.name { font-family: inherit; color: var(--tx); font-size: 12px; }
-    .summary-table td.right { text-align: right; }
-    .summary-table tr.total-row td {
-      border-top: 2px solid var(--ac);
-      border-bottom: none;
-      font-weight: 700;
-      color: var(--a2);
-    }
-    .summary-table tr:hover td { background: rgba(22,119,255,0.06); }
-
-    /* Bar chart */
-    .bar-chart { margin-top: 20px; }
-    .bar-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .bar-name {
-      font-size: 11px;
-      color: var(--t2);
-      width: 180px;
-      flex-shrink: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .bar-track {
-      flex: 1;
-      height: 20px;
-      background: var(--s2);
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--ac), var(--a2));
-      transition: width 0.4s ease;
-    }
-    .bar-val {
-      font-size: 11px;
-      font-family: var(--mono);
-      color: var(--a2);
-      width: 120px;
-      flex-shrink: 0;
-      text-align: right;
-    }
-
-    /* Narrative cards */
-    .narrative-card {
-      background: var(--s2);
-      border: 1px solid var(--bd);
-      border-left: 3px solid var(--ac);
-      border-radius: 6px;
-      padding: 12px 16px;
-      margin-bottom: 10px;
-    }
-    .narrative-uc-name {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--a2);
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .narrative-text {
-      font-size: 13px;
-      color: var(--tx);
-      line-height: 1.6;
-    }
-
-    /* ROI / TCO */
-    .roi-section { margin-bottom: 20px; }
-    .roi-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--t2);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-    }
-    .roi-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .roi-field-label {
-      flex: 1;
-      font-size: 13px;
-      color: var(--tx);
-    }
-    .roi-metric-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--bd);
-    }
-    .roi-metric-label { font-size: 13px; color: var(--t2); }
-    .roi-metric-value {
-      font-size: 18px;
-      font-weight: 700;
-      font-family: var(--mono);
-      color: var(--a2);
-    }
-    .roi-metric-value.green { color: var(--gr); }
-    .roi-metric-value.yellow { color: var(--yl); }
-
-    /* Waterfall */
-    .waterfall {
-      display: flex;
-      gap: 0;
-      align-items: flex-end;
-      margin-top: 20px;
-      padding: 20px;
-      background: var(--s2);
-      border-radius: 8px;
-      border: 1px solid var(--bd);
-      min-height: 180px;
-    }
-    .wf-bar-wrap {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-    .wf-bar {
-      width: 60px;
-      border-radius: 4px 4px 0 0;
-      min-height: 4px;
-    }
-    .wf-label {
-      font-size: 10px;
-      color: var(--t2);
-      text-align: center;
-      white-space: nowrap;
-    }
-    .wf-value {
-      font-size: 11px;
-      font-family: var(--mono);
-      color: var(--tx);
-      text-align: center;
-    }
-
-    /* Assumptions */
-    .assumption-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--bd);
-    }
-    .assumption-label {
-      flex: 1;
-      font-size: 13px;
-      color: var(--tx);
-    }
-    .assumption-note {
-      font-size: 11px;
-      color: var(--t2);
-      flex: 1;
-    }
-
-    /* Compare */
-    .version-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      background: var(--s2);
-      border: 1px solid var(--bd);
-      border-radius: 6px;
-      margin-bottom: 8px;
-    }
-    .version-name {
-      flex: 1;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .version-ts {
-      font-size: 11px;
-      color: var(--t2);
-    }
-    .version-value {
-      font-size: 12px;
-      font-family: var(--mono);
-      color: var(--a2);
-    }
-    .version-checkbox {
-      accent-color: var(--ac);
-    }
-    .diff-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-    }
-    .diff-table th {
-      text-align: left;
-      padding: 6px 12px;
-      color: var(--t2);
-      font-size: 11px;
-      border-bottom: 1px solid var(--bd);
-    }
-    .diff-table td {
-      padding: 6px 12px;
-      border-bottom: 1px solid rgba(46,61,110,0.4);
-      font-family: var(--mono);
-    }
-    .diff-table td.name { font-family: inherit; }
-    .diff-up { color: var(--gr); }
-    .diff-down { color: var(--rd); }
-
-    /* Admin */
-    .theme-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .theme-swatch {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      padding: 6px;
-      border: 2px solid transparent;
-      border-radius: 6px;
-      transition: border-color 0.15s;
-    }
-    .theme-swatch.active { border-color: var(--ac); }
-    .theme-color-block {
-      width: 48px;
-      height: 32px;
-      border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .theme-name {
-      font-size: 10px;
-      color: var(--t2);
-    }
-    .admin-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--bd);
-    }
-    .admin-label {
-      font-size: 13px;
-      color: var(--tx);
-    }
-    .admin-sublabel {
-      font-size: 11px;
-      color: var(--t2);
-      margin-top: 2px;
-    }
+    /* ── Toggle switch ── */
     .toggle-switch {
       position: relative;
       width: 36px;
       height: 20px;
+      flex-shrink: 0;
     }
     .toggle-switch input { opacity: 0; width: 0; height: 0; }
     .toggle-slider {
@@ -752,7 +252,7 @@
     .toggle-switch input:checked + .toggle-slider { background: var(--ac); border-color: var(--ac); }
     .toggle-switch input:checked + .toggle-slider:before { transform: translateX(16px); background: #fff; }
 
-    /* Buttons */
+    /* ── Buttons ── */
     .btn {
       padding: 7px 16px;
       border-radius: 5px;
@@ -771,15 +271,442 @@
       border-color: var(--ac);
       color: #fff;
     }
-    .btn-primary:hover { background: var(--a2); border-color: var(--a2); color: #fff; }
-    .btn-danger {
-      border-color: var(--rd);
-      color: var(--rd);
-    }
+    .btn-primary:hover { opacity: 0.85; color: #fff; }
+    .btn-danger { border-color: var(--rd); color: var(--rd); }
     .btn-danger:hover { background: rgba(239,68,68,0.1); }
     .btn-sm { padding: 4px 10px; font-size: 11px; }
+    .btn-dashed {
+      border: 1px dashed var(--bd);
+      background: transparent;
+      color: var(--t2);
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      border-radius: 6px;
+      padding: 8px 16px;
+      transition: all 0.15s;
+    }
+    .btn-dashed:hover { border-color: var(--ac); color: var(--ac); }
 
-    /* Section headers */
+    /* ── Cards ── */
+    .card {
+      background: var(--sf);
+      border: 1px solid var(--bd);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Summary banner ── */
+    .summary-banner {
+      background: var(--sf);
+      border: 1px solid var(--bd);
+      border-radius: 8px;
+      padding: 20px 28px;
+      display: flex;
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+    .banner-half {
+      flex: 1;
+    }
+    .banner-half.right { text-align: right; }
+    .banner-stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--t2);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 6px;
+    }
+    .banner-big-val {
+      font-size: 36px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--gr);
+      line-height: 1;
+    }
+    .banner-ai-add {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--a2);
+      margin-left: 8px;
+    }
+    .banner-sub {
+      font-size: 11px;
+      color: var(--t2);
+      margin-top: 4px;
+    }
+    .banner-range-val {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--tx);
+      line-height: 1;
+    }
+    .banner-ai-range {
+      font-size: 12px;
+      color: var(--a2);
+      margin-top: 4px;
+      font-family: var(--mono);
+    }
+
+    /* ── Use case section header ── */
+    .uc-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .uc-section-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* ── Use case card ── */
+    .uc-card {
+      background: var(--sf);
+      border: 1px solid var(--bd);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color 0.15s;
+    }
+    .uc-card:hover { border-color: var(--ac); }
+    .uc-card.disabled { opacity: 0.55; }
+    .uc-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+    }
+    .uc-toggle {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--ac);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .uc-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .uc-cat {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .uc-cat.revenue-growth     { background: rgba(16,185,129,0.15); color: var(--gr); border: 1px solid rgba(16,185,129,0.3); }
+    .uc-cat.revenue-protection { background: rgba(245,158,11,0.15);  color: var(--yl); border: 1px solid rgba(245,158,11,0.3); }
+    .uc-cat.cost-savings       { background: rgba(99,102,241,0.15);  color: #a5b4fc;  border: 1px solid rgba(99,102,241,0.3); }
+    .sol-chip {
+      font-size: 10px;
+      padding: 1px 7px;
+      border-radius: 8px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .uc-header-right {
+      margin-left: auto;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .uc-annual-val {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--gr);
+    }
+    .uc-ai-available {
+      font-size: 10px;
+      color: var(--a2);
+      margin-top: 2px;
+    }
+    .uc-3yr-range {
+      font-size: 11px;
+      color: var(--t2);
+      font-family: var(--mono);
+      margin-top: 2px;
+    }
+    .uc-chevron {
+      font-size: 10px;
+      color: var(--t2);
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── UC body ── */
+    .uc-body {
+      border-top: 1px solid var(--bd);
+    }
+
+    /* Platform solutions row */
+    .platform-sol-row {
+      padding: 10px 16px;
+      background: var(--s2);
+      border-bottom: 1px solid var(--bd);
+    }
+    .platform-sol-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--t2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .platform-sol-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .platform-sol-pill {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 500;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+
+    /* Step block */
+    .step-section {
+      padding: 16px;
+      border-bottom: 1px solid var(--bd);
+    }
+    .step-label-row {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--a2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .fields-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    /* Field card */
+    .field-card {
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      border-radius: 6px;
+      padding: 10px 12px;
+      min-width: 160px;
+      flex: 1;
+    }
+    .field-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .field-card-label {
+      font-size: 12px;
+      color: var(--t2);
+      font-weight: 500;
+    }
+    .field-card-badges {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .badge-lock {
+      font-size: 10px;
+      color: var(--yl);
+    }
+    .badge-input {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(43,127,255,0.15);
+      color: var(--ac);
+      border: 1px solid rgba(43,127,255,0.3);
+    }
+    .badge-assum {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(245,158,11,0.15);
+      color: var(--yl);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .field-card-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .field-card-prefix {
+      font-size: 12px;
+      color: var(--t2);
+      font-family: var(--mono);
+    }
+    .field-card-input {
+      display: block;
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--bd);
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 14px;
+      font-family: var(--mono);
+      color: var(--tx);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field-card-input:focus { border-color: var(--ac); }
+    .field-card-input:disabled { opacity: 0.5; cursor: not-allowed; }
+    .field-card-suffix {
+      font-size: 12px;
+      color: var(--t2);
+      white-space: nowrap;
+    }
+    .field-card-static {
+      font-size: 14px;
+      font-family: var(--mono);
+      color: var(--tx);
+    }
+    .field-card-note {
+      font-size: 10px;
+      color: var(--t2);
+      margin-top: 6px;
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    /* Step formula and result */
+    .step-formula {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--a2);
+      padding: 6px 0;
+      margin-top: 4px;
+    }
+    .step-result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+    }
+    .step-result-label {
+      font-size: 12px;
+      color: var(--t2);
+    }
+    .step-result-val {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--tx);
+    }
+    .step-result-val.final { font-size: 18px; color: var(--gr); }
+
+    /* 3-year projection grid */
+    .projection-section {
+      margin: 16px 16px 0;
+      padding: 14px 0 16px;
+      border-top: 1px solid var(--bd);
+    }
+    .projection-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--t2);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+    .projection-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .proj-card {
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+    .proj-card.total { border-color: var(--ac); }
+    .proj-card-label {
+      font-size: 11px;
+      color: var(--t2);
+      margin-bottom: 4px;
+    }
+    .proj-card-val {
+      font-size: 13px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--tx);
+    }
+    .proj-card.total .proj-card-label { color: var(--a2); }
+    .proj-card.total .proj-card-val { color: var(--a2); }
+
+    /* AI layer section */
+    .ai-section-block {
+      margin: 0 16px 12px;
+      padding: 12px;
+      background: rgba(43,127,255,0.05);
+      border: 1px solid rgba(43,127,255,0.2);
+      border-radius: 6px;
+    }
+    .ai-section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .ai-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(43,127,255,0.2);
+      color: var(--a2);
+      border: 1px solid rgba(43,127,255,0.3);
+      padding: 1px 7px;
+      border-radius: 8px;
+    }
+    .ai-section-title {
+      font-size: 12px;
+      color: var(--a2);
+      font-weight: 500;
+    }
+    .ai-section-hint {
+      font-size: 11px;
+      color: var(--t2);
+    }
+    .ai-result-line {
+      font-size: 12px;
+      font-family: var(--mono);
+      color: var(--a2);
+      margin-top: 8px;
+    }
+
+    /* Add value lever button */
+    .add-lever-btn {
+      margin: 12px 16px;
+      padding: 10px;
+      border: 1px dashed var(--bd);
+      border-radius: 6px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--t2);
+      cursor: pointer;
+      background: transparent;
+      font-family: inherit;
+      width: calc(100% - 32px);
+      transition: all 0.15s;
+    }
+    .add-lever-btn:hover { border-color: var(--ac); color: var(--ac); }
+
+    /* ── Summary tab ── */
     .section-header {
       font-size: 11px;
       font-weight: 700;
@@ -790,22 +717,233 @@
       padding-bottom: 6px;
       border-bottom: 1px solid var(--bd);
     }
-
-    /* Grid */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-
-    /* Empty state */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .summary-table th {
+      text-align: left;
+      padding: 8px 12px;
       color: var(--t2);
-      font-size: 13px;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--bd);
+    }
+    .summary-table th.right { text-align: right; }
+    .summary-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(46,61,110,0.5);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .summary-table td.name { font-family: inherit; color: var(--tx); }
+    .summary-table td.right { text-align: right; }
+    .summary-table tr.total-row td {
+      border-top: 2px solid var(--ac);
+      border-bottom: none;
+      font-weight: 700;
+      color: var(--a2);
+    }
+    .summary-table tr:hover td { background: rgba(43,127,255,0.06); }
+
+    /* Bar chart */
+    .bar-chart { margin-top: 12px; }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .bar-name {
+      font-size: 11px;
+      color: var(--t2);
+      width: 200px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bar-track {
+      flex: 1;
+      height: 20px;
+      background: var(--s2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--ac), var(--a2));
+      transition: width 0.4s ease;
+    }
+    .bar-val {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--a2);
+      width: 130px;
+      flex-shrink: 0;
+      text-align: right;
     }
 
-    /* Company input */
-    input.company-input {
-      width: 200px;
+    /* Narrative */
+    .narrative-card {
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      border-left: 3px solid var(--ac);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+    }
+    .narrative-uc-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--a2);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .narrative-text {
+      font-size: 13px;
+      color: var(--tx);
+      line-height: 1.6;
+    }
+
+    /* ── ROI tab ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .roi-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .roi-field-label { flex: 1; font-size: 13px; color: var(--tx); }
+    .field-input-wrap { display: flex; align-items: center; gap: 4px; }
+    .field-prefix { font-size: 12px; color: var(--t2); font-family: var(--mono); }
+    input[type="number"], input[type="text"] {
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      border-radius: 4px;
+      color: var(--tx);
+      padding: 4px 8px;
+      font-size: 12px;
+      font-family: var(--mono);
+      width: 100px;
+      text-align: right;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input[type="number"]:focus, input[type="text"]:focus { border-color: var(--ac); }
+    input[type="number"]:disabled, input[type="text"]:disabled { opacity: 0.5; cursor: not-allowed; }
+    input.wide { width: 200px; }
+    .field-suffix { font-size: 11px; color: var(--t2); min-width: 24px; }
+    .divider { height: 1px; background: var(--bd); margin: 16px 0; }
+    .roi-metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--bd);
+    }
+    .roi-metric-label { font-size: 13px; color: var(--t2); }
+    .roi-metric-value { font-size: 18px; font-weight: 700; font-family: var(--mono); color: var(--a2); }
+    .roi-metric-value.green { color: var(--gr); }
+    .roi-metric-value.yellow { color: var(--yl); }
+    .waterfall {
+      display: flex;
+      gap: 0;
+      align-items: flex-end;
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--s2);
+      border-radius: 8px;
+      border: 1px solid var(--bd);
+      min-height: 180px;
+    }
+    .wf-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .wf-bar { width: 60px; border-radius: 4px 4px 0 0; min-height: 4px; }
+    .wf-label { font-size: 10px; color: var(--t2); text-align: center; white-space: nowrap; }
+    .wf-value { font-size: 11px; font-family: var(--mono); color: var(--tx); text-align: center; }
+
+    /* ── Assumptions tab ── */
+    .assumption-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--bd);
+    }
+    .assumption-label-text { flex: 1; font-size: 13px; color: var(--tx); }
+    .assumption-note { font-size: 11px; color: var(--t2); flex: 1; }
+
+    /* ── Compare tab ── */
+    .version-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--s2);
+      border: 1px solid var(--bd);
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .version-name { flex: 1; font-size: 13px; font-weight: 600; }
+    .version-ts { font-size: 11px; color: var(--t2); }
+    .version-value { font-size: 12px; font-family: var(--mono); color: var(--a2); }
+    .diff-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .diff-table th {
+      text-align: left;
+      padding: 6px 12px;
+      color: var(--t2);
+      font-size: 11px;
+      border-bottom: 1px solid var(--bd);
+    }
+    .diff-table td {
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(46,61,110,0.4);
+      font-family: var(--mono);
+    }
+    .diff-table td.name { font-family: inherit; }
+    .diff-up { color: var(--gr); }
+    .diff-down { color: var(--rd); }
+
+    /* ── Admin tab ── */
+    .theme-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    .theme-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 6px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      transition: border-color 0.15s;
+    }
+    .theme-swatch.active { border-color: var(--ac); }
+    .theme-color-block {
+      width: 48px;
+      height: 32px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .theme-name { font-size: 10px; color: var(--t2); }
+    .admin-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--bd);
+    }
+    .admin-label { font-size: 13px; color: var(--tx); }
+    .admin-sublabel { font-size: 11px; color: var(--t2); margin-top: 2px; }
+    .company-input {
       padding: 5px 10px;
       border-radius: 5px;
       background: var(--s2);
@@ -815,54 +953,27 @@
       font-family: inherit;
       outline: none;
     }
-    input.company-input:focus { border-color: var(--ac); }
+    .company-input:focus { border-color: var(--ac); }
 
-    /* Solutions multi-select */
-    .sol-filter-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    /* Misc */
-    .mt-8 { margin-top: 8px; }
-    .mt-16 { margin-top: 16px; }
-    .mt-20 { margin-top: 20px; }
-    .mb-8 { margin-bottom: 8px; }
-    .mb-16 { margin-bottom: 16px; }
-    .flex { display: flex; }
-    .items-center { align-items: center; }
-    .gap-8 { gap: 8px; }
-    .gap-12 { gap: 12px; }
-    .flex-1 { flex: 1; }
-    .text-right { text-align: right; }
+    /* ── Misc utils ── */
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--t2); font-size: 13px; }
     .font-mono { font-family: var(--mono); }
     .text-accent { color: var(--ac); }
     .text-green { color: var(--gr); }
     .text-muted { color: var(--t2); }
-    .text-sm { font-size: 12px; }
-    .text-xs { font-size: 11px; }
     .fw-600 { font-weight: 600; }
     .fw-700 { font-weight: 700; }
-    .divider { height: 1px; background: var(--bd); margin: 16px 0; }
-    .badge {
-      display: inline-block;
-      font-size: 10px;
-      padding: 1px 6px;
-      border-radius: 8px;
-      font-weight: 600;
-    }
+    .mt-8 { margin-top: 8px; }
+    .mt-12 { margin-top: 12px; }
 
-    /* Print styles */
+    /* ── Print ── */
     @media print {
       body { background: white !important; color: black !important; }
       .no-print { display: none !important; }
-      .tab-nav { display: none !important; }
-      .header { position: static; background: white; color: black; border-bottom: 2px solid #ccc; }
+      .tab-nav, .header2 { display: none !important; }
+      .header1 { position: static; background: white; color: black; border-bottom: 2px solid #ccc; }
       .tab-content { display: block !important; }
-      .print-break { page-break-before: always; }
       .card, .uc-card { border: 1px solid #ccc; background: white; color: black; }
-      input { background: #f5f5f5; color: black; border: 1px solid #ccc; }
     }
   </style>
 </head>
@@ -875,18 +986,31 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- App source — transpiled by Babel after data loads -->
   <script type="text/plain" id="app-source">
     const { useState, useEffect, useCallback, useMemo, useRef } = React;
     const { INDUSTRIES, SOLUTIONS, DEFAULT_MODEL, THEMES, LIB, fC, fN, fP, tyCalc, addTotals, generateNarrative } = window.__AVC__;
 
     const EMPTY_TOTALS = { y1l:0, y1h:0, y2l:0, y2h:0, y3l:0, y3h:0, tl:0, th:0 };
-    const LS_KEY = 'avc_state_v1';
+    const LS_KEY = 'avc_state_v2';
+
+    // Non-AI solutions for display
+    const NON_AI_SOLUTIONS = SOLUTIONS.filter(s => !s.ai && s.id !== 'pro_services');
+
+    function fAbbrev(n) {
+      if (!n || isNaN(n)) return '$0';
+      if (Math.abs(n) >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+      if (Math.abs(n) >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+      if (Math.abs(n) >= 1e3) return '$' + (n / 1e3).toFixed(0) + 'K';
+      return fC(n);
+    }
 
     function loadState() {
       try {
         const raw = localStorage.getItem(LS_KEY);
         if (raw) return JSON.parse(raw);
+        // Try legacy key
+        const legacy = localStorage.getItem('avc_state_v1');
+        if (legacy) return JSON.parse(legacy);
       } catch(e) {}
       return null;
     }
@@ -895,16 +1019,23 @@
       try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch(e) {}
     }
 
+    function catClass(cat) {
+      if (!cat) return '';
+      return cat.toLowerCase().replace(/[^a-z]/g, '-').replace(/--+/g, '-');
+    }
+
     // -------------------------------------------------------------------------
-    // FieldInput
+    // FieldCard — new card-style field input
     // -------------------------------------------------------------------------
-    function FieldInput({ field, value, onChange, locked, customerMode }) {
+    function FieldCard({ field, value, onChange, locked, customerMode }) {
       const isLocked = locked && customerMode;
       const isPct = field.u === '%';
       const isCurrency = field.u === '$';
       const isAssumption = field.s === 'assumption';
 
-      const displayVal = isPct ? parseFloat(((value ?? field.d) * 100).toFixed(4)).toString() : (value ?? field.d);
+      const displayVal = isPct
+        ? parseFloat(((value ?? field.d) * 100).toFixed(4)).toString()
+        : (value ?? field.d);
 
       function handleChange(e) {
         let v = parseFloat(e.target.value);
@@ -913,47 +1044,40 @@
         onChange(v);
       }
 
-      const labelNode = (
-        <span className={`field-label ${isAssumption ? 'assumption-label' : ''}`}>
-          {field.l}
-          {isAssumption && field.n && (
-            <span className="info-btn" style={{position:'relative',display:'inline-block'}}>
-              ⓘ
-              <span className="tooltip">{field.n}</span>
-            </span>
-          )}
-        </span>
-      );
-
-      if (isLocked) {
-        return (
-          <div className="field-row">
-            {labelNode}
-            <span className="lock-icon">🔒</span>
-            <span className="field-static">
-              {isPct ? fP(value ?? field.d) : isCurrency ? fC(value ?? field.d) : fN(value ?? field.d)}
-            </span>
-            <span className="field-suffix">{isPct ? '' : field.u !== 'n' && field.u !== 'cust' && field.u !== 'FTEs' ? field.u : ''}</span>
-          </div>
-        );
-      }
+      const unitSuffix = isPct ? '%' : (field.u !== '$' && field.u !== 'n' && field.u !== 'cust' ? field.u : '');
 
       return (
-        <div className="field-row">
-          {labelNode}
-          <div className="field-input-wrap">
-            {isCurrency && <span className="field-prefix">$</span>}
-            <input
-              type="number"
-              value={displayVal}
-              onChange={handleChange}
-              step={isPct ? '0.1' : isCurrency ? '1000' : '1'}
-            />
-            {isPct && <span className="field-suffix">%</span>}
-            {!isPct && field.u !== '$' && field.u !== 'n' && (
-              <span className="field-suffix">{field.u}</span>
-            )}
+        <div className="field-card">
+          <div className="field-card-top">
+            <span className="field-card-label">{field.l}</span>
+            <div className="field-card-badges">
+              <span className="badge-lock">🔒</span>
+              <span className={isAssumption ? 'badge-assum' : 'badge-input'}>
+                {isAssumption ? 'ASSUM.' : 'INPUT'}
+              </span>
+            </div>
           </div>
+          {isLocked ? (
+            <div className="field-card-static">
+              {isPct ? fP(value ?? field.d) : isCurrency ? fC(value ?? field.d) : fN(value ?? field.d)}
+              {unitSuffix && !isPct ? <span className="field-card-suffix"> {unitSuffix}</span> : null}
+            </div>
+          ) : (
+            <div className="field-card-input-wrap">
+              {isCurrency && <span className="field-card-prefix">$</span>}
+              <input
+                type="number"
+                className="field-card-input"
+                value={displayVal}
+                onChange={handleChange}
+                step={isPct ? '0.1' : isCurrency ? '1000' : '1'}
+              />
+              {unitSuffix && <span className="field-card-suffix">{unitSuffix}</span>}
+            </div>
+          )}
+          {field.n && (
+            <div className="field-card-note">{field.n}</div>
+          )}
         </div>
       );
     }
@@ -961,7 +1085,10 @@
     // -------------------------------------------------------------------------
     // UseCaseCard
     // -------------------------------------------------------------------------
-    function UseCaseCard({ uc, onChange, enabled, onToggle, aiEnabled, onAiToggle, model, customerMode, lockedFields, activeLens, company, inputs }) {
+    function UseCaseCard({ uc, onChange, enabled, onToggle, aiEnabled, onAiToggle, model, customerMode, lockedFields, activeLens, company, inputs, globalAiEnabled }) {
+      const [expanded, setExpanded] = useState(false);
+      const [localSols, setLocalSols] = useState(uc.sol || []);
+
       const solMap = useMemo(() => {
         const m = {};
         SOLUTIONS.forEach(s => { m[s.id] = s; });
@@ -1015,11 +1142,6 @@
       }
       const aiNpv = aiEnabled ? tyCalc(aiValue, model) : null;
 
-      function catClass(cat) {
-        if (!cat) return '';
-        return cat.toLowerCase().replace(/[^a-z]/g, '-').replace(/--+/g, '-');
-      }
-
       const lensVal = useMemo(() => {
         if (activeLens === 'outcomes') {
           if (uc.ops) { try { return fN(uc.ops.fn(allInputs)) + ' ' + (uc.ops.unit || ''); } catch(e) { return '—'; } }
@@ -1032,21 +1154,39 @@
         return null;
       }, [activeLens, allInputs]);
 
+      function handleHeaderClick(e) {
+        // clicks on checkbox are handled separately
+        if (e.target.type === 'checkbox') return;
+        if (enabled) setExpanded(prev => !prev);
+      }
+
+      function handleCheckboxChange(e) {
+        e.stopPropagation();
+        onToggle(uc.id);
+        if (!enabled) setExpanded(true);
+      }
+
+      function toggleLocalSol(sid) {
+        setLocalSols(prev =>
+          prev.includes(sid) ? prev.filter(x => x !== sid) : [...prev, sid]
+        );
+      }
+
       return (
         <div className={`uc-card ${!enabled ? 'disabled' : ''}`}>
-          <div className="uc-header" onClick={() => onToggle(uc.id)}>
+          <div className="uc-header" onClick={handleHeaderClick}>
             <input
               type="checkbox"
               className="uc-toggle"
               checked={!!enabled}
-              onChange={e => { e.stopPropagation(); onToggle(uc.id); }}
+              onChange={handleCheckboxChange}
               onClick={e => e.stopPropagation()}
             />
             <span className="uc-name">{uc.name}</span>
             {uc.cat && (
               <span className={`uc-cat ${catClass(uc.cat)}`}>{uc.cat}</span>
             )}
-            {(uc.sol || []).map(sid => {
+            {localSols.slice(0, 3).map(sid => {
               const s = solMap[sid];
               if (!s) return null;
               return (
@@ -1055,73 +1195,61 @@
                 </span>
               );
             })}
-            {enabled && activeLens !== 'financial' && (
-              <span style={{marginLeft:'auto', fontSize:12, fontFamily:'var(--mono)', color:'var(--a2)', fontWeight:600}}>
-                {lensVal}
-              </span>
-            )}
-            {enabled && activeLens === 'financial' && (
-              <span style={{marginLeft:'auto', fontSize:12, fontFamily:'var(--mono)', color:'var(--gr)', fontWeight:700}}>
-                {fC(npv.tl)}–{fC(npv.th)}
-              </span>
+            <div className="uc-header-right">
+              {enabled && activeLens !== 'financial' && lensVal && (
+                <div style={{fontSize:14,fontFamily:'var(--mono)',color:'var(--a2)',fontWeight:600}}>{lensVal}</div>
+              )}
+              {enabled && activeLens === 'financial' && (
+                <div className="uc-annual-val">{fAbbrev(baseAnnual)}</div>
+              )}
+              {enabled && uc.ai && !aiEnabled && (
+                <div className="uc-ai-available">+AI available</div>
+              )}
+              {enabled && uc.ai && aiEnabled && (
+                <div className="uc-ai-available">+{fAbbrev(aiValue)} AI</div>
+              )}
+              {enabled && (
+                <div className="uc-3yr-range">3yr: {fAbbrev(npv.tl)} – {fAbbrev(npv.th)}</div>
+              )}
+            </div>
+            {enabled && (
+              <span className="uc-chevron">{expanded ? '▲' : '▼'}</span>
             )}
           </div>
 
-          {enabled && (
+          {enabled && expanded && (
             <div className="uc-body">
-              {steps.map((s, i) => (
-                <div key={s.step.id} className="step-block">
-                  <div className="step-label">Step {i+1}: {s.step.label}</div>
-                  {(s.step.fields || []).map(f => (
-                    <FieldInput
-                      key={f.k}
-                      field={f}
-                      value={getVal(f.k)}
-                      onChange={v => onChange(uc.id, f.k, v)}
-                      locked={lockedFields.has(`${uc.id}_${f.k}`)}
-                      customerMode={customerMode}
-                    />
-                  ))}
-                  {s.step.ft && (
-                    <div className="step-formula">{s.step.ft}</div>
-                  )}
-                  <div className="step-result">
-                    <span className="step-result-label">{s.step.rl}</span>
-                    <span className={s.isFinal ? 'step-final-value' : 'step-result-value'}>
-                      {s.step.ru === '$' ? fC(s.val) : s.step.ru === '%' ? fP(s.val) : fN(s.val)}
-                      {s.step.ru === '$' && s.step.ru !== '$' ? '' : ''}
-                    </span>
-                  </div>
-                  {s.isFinal && (
-                    <div className="step-npv">
-                      <div className="step-npv-label">3-Year NPV Range</div>
-                      <div className="step-npv-value">{fC(npv.tl)} – {fC(npv.th)}</div>
-                      <div style={{fontSize:11,color:'var(--t2)',marginTop:4,fontFamily:'var(--mono)'}}>
-                        Y1: {fC(npv.y1l)}–{fC(npv.y1h)} &nbsp;|&nbsp;
-                        Y2: {fC(npv.y2l)}–{fC(npv.y2h)} &nbsp;|&nbsp;
-                        Y3: {fC(npv.y3l)}–{fC(npv.y3h)}
-                      </div>
-                    </div>
-                  )}
+              {/* Platform solutions row */}
+              <div className="platform-sol-row">
+                <div className="platform-sol-label">PLATFORM SOLUTIONS (click to add/remove)</div>
+                <div className="platform-sol-pills">
+                  {NON_AI_SOLUTIONS.map(s => {
+                    const isActive = localSols.includes(s.id);
+                    return (
+                      <button
+                        key={s.id}
+                        className="platform-sol-pill"
+                        style={isActive
+                          ? { background: s.color + '33', color: s.color, border: `1px solid ${s.color}66` }
+                          : { background: 'transparent', color: 'var(--t2)', border: '1px solid var(--bd)' }
+                        }
+                        onClick={() => toggleLocalSol(s.id)}
+                      >
+                        {s.label.replace('Amplitude ', '')}
+                      </button>
+                    );
+                  })}
                 </div>
-              ))}
+              </div>
 
-              {uc.ai && (
-                <div className="ai-section">
-                  <div className="ai-toggle-row" onClick={() => onAiToggle(uc.id)}>
-                    <input
-                      type="checkbox"
-                      checked={!!aiEnabled}
-                      onChange={() => {}}
-                      style={{accentColor:'var(--ac)'}}
-                    />
-                    <span className="ai-badge">AI</span>
-                    <span className="ai-label">{uc.ai.label}</span>
-                  </div>
-                  {aiEnabled && (
-                    <div style={{marginTop:10}}>
-                      {(uc.ai.fields || []).map(f => (
-                        <FieldInput
+              {/* Steps */}
+              {steps.map((s, i) => (
+                <div key={s.step.id} className="step-section">
+                  <div className="step-label-row">Step {i + 1}: {s.step.label}</div>
+                  {(s.step.fields || []).length > 0 && (
+                    <div className="fields-grid">
+                      {(s.step.fields || []).map(f => (
+                        <FieldCard
                           key={f.k}
                           field={f}
                           value={getVal(f.k)}
@@ -1130,14 +1258,87 @@
                           customerMode={customerMode}
                         />
                       ))}
-                      <div className="step-formula">{uc.ai.ft}</div>
-                      <div className="ai-npv" style={{marginTop:8}}>
+                    </div>
+                  )}
+                  {s.step.ft && (
+                    <div className="step-formula">{s.step.ft}</div>
+                  )}
+                  <div className="step-result-row">
+                    <span className="step-result-label">{s.step.rl}</span>
+                    <span className={`step-result-val ${s.isFinal ? 'final' : ''}`}>
+                      {s.step.ru === '$' ? fC(s.val) : s.step.ru === '%' ? fP(s.val) : fN(s.val)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+
+              {/* AI layer */}
+              {uc.ai && (
+                <div className="ai-section-block" style={{marginTop: 12}}>
+                  <div className="ai-section-header" onClick={() => onAiToggle(uc.id)}>
+                    <input
+                      type="checkbox"
+                      checked={!!aiEnabled}
+                      onChange={() => {}}
+                      style={{accentColor:'var(--ac)',cursor:'pointer'}}
+                      onClick={e => { e.stopPropagation(); onAiToggle(uc.id); }}
+                    />
+                    <span className="ai-badge">AI</span>
+                    <span className="ai-section-title">{uc.ai.label}</span>
+                    {!aiEnabled && <span className="ai-section-hint">(Toggle AI to include)</span>}
+                  </div>
+                  {aiEnabled && (
+                    <div style={{marginTop:10}}>
+                      {(uc.ai.fields || []).length > 0 && (
+                        <div className="fields-grid">
+                          {(uc.ai.fields || []).map(f => (
+                            <FieldCard
+                              key={f.k}
+                              field={f}
+                              value={getVal(f.k)}
+                              onChange={v => onChange(uc.id, f.k, v)}
+                              locked={lockedFields.has(`${uc.id}_${f.k}`)}
+                              customerMode={customerMode}
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {uc.ai.ft && <div className="step-formula">{uc.ai.ft}</div>}
+                      <div className="ai-result-line">
                         AI adds: {fC(aiNpv.tl)} – {fC(aiNpv.th)} over 3 years
                       </div>
                     </div>
                   )}
                 </div>
               )}
+
+              {/* Add value lever button */}
+              <button className="add-lever-btn" onClick={e => e.preventDefault()}>
+                + Add Value Lever to This Use Case
+              </button>
+
+              {/* 3-year projection */}
+              <div className="projection-section">
+                <div className="projection-label">3-YEAR PROJECTION</div>
+                <div className="projection-grid">
+                  <div className="proj-card">
+                    <div className="proj-card-label">Yr1 (50%)</div>
+                    <div className="proj-card-val">{fAbbrev(npv.y1l)} – {fAbbrev(npv.y1h)}</div>
+                  </div>
+                  <div className="proj-card">
+                    <div className="proj-card-label">Yr2 (80%)</div>
+                    <div className="proj-card-val">{fAbbrev(npv.y2l)} – {fAbbrev(npv.y2h)}</div>
+                  </div>
+                  <div className="proj-card">
+                    <div className="proj-card-label">Yr3 (100%)</div>
+                    <div className="proj-card-val">{fAbbrev(npv.y3l)} – {fAbbrev(npv.y3h)}</div>
+                  </div>
+                  <div className="proj-card total">
+                    <div className="proj-card-label">3-Yr Total</div>
+                    <div className="proj-card-val">{fAbbrev(npv.tl)} – {fAbbrev(npv.th)}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -1147,15 +1348,8 @@
     // -------------------------------------------------------------------------
     // Tab: Calculator
     // -------------------------------------------------------------------------
-    function TabCalculator({ industry, setIndustry, company, setCompany, solFilter, setSolFilter, activeLens, setActiveLens, model, inputs, setInputs, enabled, setEnabled, aiEnabled, setAiEnabled, customerMode, lockedFields }) {
+    function TabCalculator({ industry, model, inputs, setInputs, enabled, setEnabled, aiEnabled, setAiEnabled, customerMode, lockedFields, activeLens, company, globalAiEnabled }) {
       const ucs = LIB[industry] || [];
-
-      const filteredUcs = useMemo(() => {
-        if (!solFilter || solFilter.length === 0) return ucs;
-        return ucs.filter(uc =>
-          (uc.sol || []).some(s => solFilter.includes(s))
-        );
-      }, [ucs, solFilter]);
 
       function toggleEnabled(ucId) {
         setEnabled(prev => ({ ...prev, [ucId]: !prev[ucId] }));
@@ -1169,76 +1363,93 @@
         setInputs(prev => ({ ...prev, [`${ucId}_${key}`]: val }));
       }
 
-      function toggleSolFilter(sid) {
-        setSolFilter(prev =>
-          prev.includes(sid) ? prev.filter(x => x !== sid) : [...prev, sid]
-        );
-      }
+      // Compute summary banner totals
+      const bannerTotals = useMemo(() => {
+        let totalAnnual = 0;
+        let totalAiAnnual = 0;
+        let combinedNpv = { ...EMPTY_TOTALS };
+
+        ucs.filter(uc => enabled[uc.id]).forEach(uc => {
+          const allInputs = {};
+          (uc.steps || []).forEach(step => {
+            (step.fields || []).forEach(f => {
+              const key = `${uc.id}_${f.k}`;
+              allInputs[f.k] = inputs[key] !== undefined ? inputs[key] : f.d;
+            });
+          });
+          if (uc.ai) {
+            (uc.ai.fields || []).forEach(f => {
+              const key = `${uc.id}_${f.k}`;
+              allInputs[f.k] = inputs[key] !== undefined ? inputs[key] : f.d;
+            });
+          }
+          let prev = null;
+          let annual = 0;
+          (uc.steps || []).forEach(step => {
+            let val = 0;
+            try { val = step.fn(allInputs, prev); } catch(e) {}
+            if (!isFinite(val)) val = 0;
+            prev = val;
+            if (step.fin) annual = val;
+          });
+          totalAnnual += annual;
+
+          let aiAnnual = 0;
+          if (aiEnabled[uc.id] && uc.ai) {
+            try { aiAnnual = uc.ai.fn(allInputs, annual); } catch(e) {}
+            if (!isFinite(aiAnnual)) aiAnnual = 0;
+          }
+          totalAiAnnual += aiAnnual;
+
+          const npv = tyCalc(annual, model);
+          const aiNpv = aiAnnual > 0 ? tyCalc(aiAnnual, model) : EMPTY_TOTALS;
+          combinedNpv = addTotals(addTotals(combinedNpv, npv), aiNpv);
+        });
+
+        return { totalAnnual, totalAiAnnual, combinedNpv };
+      }, [ucs, enabled, inputs, model, aiEnabled]);
+
+      const anyAiEnabled = Object.values(aiEnabled).some(Boolean);
 
       return (
         <div>
-          <div className="controls-row">
-            <div className="controls-group">
-              <div className="controls-label">Industry</div>
-              <div className="pill-row" style={{marginBottom:0}}>
-                {INDUSTRIES.map(ind => (
-                  <button
-                    key={ind.id}
-                    className={`pill ${industry === ind.id ? 'active' : ''}`}
-                    onClick={() => setIndustry(ind.id)}
-                  >
-                    {ind.label}
-                  </button>
-                ))}
+          {/* Summary banner */}
+          <div className="summary-banner">
+            <div className="banner-half">
+              <div className="banner-stat-label">TOTAL VALUE OPPORTUNITY ⓘ</div>
+              <div style={{display:'flex',alignItems:'baseline',gap:4}}>
+                <span className="banner-big-val">{fAbbrev(bannerTotals.totalAnnual)}</span>
+                {anyAiEnabled && bannerTotals.totalAiAnnual > 0 && (
+                  <span className="banner-ai-add">+{fAbbrev(bannerTotals.totalAiAnnual)} AI</span>
+                )}
               </div>
+              <div className="banner-sub">Full annual potential – not risk-adjusted</div>
             </div>
-            <div className="controls-group" style={{marginLeft:'auto'}}>
-              <div className="controls-label">Company Name</div>
-              <input
-                type="text"
-                className="company-input"
-                placeholder="Enter company name…"
-                value={company}
-                onChange={e => setCompany(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="controls-row">
-            <div className="controls-group flex-1">
-              <div className="controls-label">Filter by Solution</div>
-              <div className="sol-filter-wrap">
-                {SOLUTIONS.map(s => (
-                  <button
-                    key={s.id}
-                    className={`pill ${solFilter.includes(s.id) ? 'active' : ''}`}
-                    style={solFilter.includes(s.id) ? {background: s.color, borderColor: s.color} : {}}
-                    onClick={() => toggleSolFilter(s.id)}
-                  >
-                    {s.label}
-                  </button>
-                ))}
+            <div className="banner-half right">
+              <div className="banner-stat-label">3-YEAR RISK-ADJUSTED PROJECTION ⓘ</div>
+              <div className="banner-range-val">
+                {fAbbrev(bannerTotals.combinedNpv.tl)} – {fAbbrev(bannerTotals.combinedNpv.th)}
               </div>
+              <div className="banner-sub">Discounted, risk-adjusted, phased</div>
+              {anyAiEnabled && (
+                <div className="banner-ai-range">
+                  + AI: {fAbbrev(bannerTotals.combinedNpv.tl)} – {fAbbrev(bannerTotals.combinedNpv.th)}
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="lens-row">
-            {[['financial','$ Financial'], ['outcomes','# Outcomes'], ['kpi','% KPI']].map(([id, lbl]) => (
-              <button
-                key={id}
-                className={`lens-btn ${activeLens === id ? 'active' : ''}`}
-                onClick={() => setActiveLens(id)}
-              >
-                {lbl}
-              </button>
-            ))}
+          {/* Use cases header */}
+          <div className="uc-section-header">
+            <span className="uc-section-title">{company || 'Customer'} – Use Cases</span>
+            <button className="btn-dashed">+ Custom Use Case</button>
           </div>
 
-          {filteredUcs.length === 0 && (
-            <div className="empty-state">No use cases match the selected solution filters.</div>
+          {ucs.length === 0 && (
+            <div className="empty-state">No use cases for this industry.</div>
           )}
 
-          {filteredUcs.map(uc => (
+          {ucs.map(uc => (
             <UseCaseCard
               key={uc.id}
               uc={uc}
@@ -1253,6 +1464,7 @@
               lockedFields={lockedFields}
               activeLens={activeLens}
               company={company}
+              globalAiEnabled={globalAiEnabled}
             />
           ))}
         </div>
@@ -1301,7 +1513,6 @@
           const ucInputs = getUcInputs(uc);
           const annual = getBaseAnnual(uc, ucInputs);
           const npv = tyCalc(annual, model);
-
           let aiAnnual = 0;
           if (aiEnabled[uc.id] && uc.ai) {
             try { aiAnnual = uc.ai.fn(ucInputs, annual); } catch(e) {}
@@ -1309,23 +1520,15 @@
           }
           const aiNpv = tyCalc(aiAnnual, model);
           const combined = addTotals(npv, aiAnnual > 0 ? aiNpv : EMPTY_TOTALS);
-
           return { uc, ucInputs, annual, npv: combined };
         });
       }, [enabledUcs, inputs, model, aiEnabled]);
 
-      const totals = useMemo(() => {
-        return rows.reduce((acc, r) => addTotals(acc, r.npv), EMPTY_TOTALS);
-      }, [rows]);
-
+      const totals = useMemo(() => rows.reduce((acc, r) => addTotals(acc, r.npv), EMPTY_TOTALS), [rows]);
       const maxTh = useMemo(() => Math.max(...rows.map(r => r.npv.th), 1), [rows]);
 
       if (enabledUcs.length === 0) {
-        return (
-          <div className="empty-state">
-            Enable use cases in the Calculator tab to see summary.
-          </div>
-        );
+        return <div className="empty-state">Enable use cases in the Calculator tab to see summary.</div>;
       }
 
       return (
@@ -1370,10 +1573,7 @@
                 <div key={r.uc.id} className="bar-row">
                   <span className="bar-name" title={r.uc.name}>{r.uc.name}</span>
                   <div className="bar-track">
-                    <div
-                      className="bar-fill"
-                      style={{width: `${Math.max(2, (r.npv.th / maxTh) * 100)}%`}}
-                    />
+                    <div className="bar-fill" style={{width: `${Math.max(2, (r.npv.th / maxTh) * 100)}%`}} />
                   </div>
                   <span className="bar-val">{fC(r.npv.tl)}–{fC(r.npv.th)}</span>
                 </div>
@@ -1450,7 +1650,6 @@
       const netNpvLow = totals.tl - totalInvestment;
       const netNpvHigh = totals.th - totalInvestment;
       const paybackMonths = totals.y1h > 0 ? Math.round((totalInvestment / totals.y1h) * 12) : 0;
-
       const wfMax = Math.max(totalInvestment, totals.y1h, totals.y1h + totals.y2h, totals.th, 1);
       const wfBars = [
         { label: 'Investment', val: totalInvestment, color: 'var(--rd)' },
@@ -1468,35 +1667,20 @@
                 <span className="roi-field-label">Platform License</span>
                 <div className="field-input-wrap">
                   <span className="field-prefix">$</span>
-                  <input
-                    type="number"
-                    value={investment.platform}
-                    onChange={e => setInvestment(p => ({...p, platform: parseFloat(e.target.value)||0}))}
-                    step="10000"
-                  />
+                  <input type="number" value={investment.platform} onChange={e => setInvestment(p => ({...p, platform: parseFloat(e.target.value)||0}))} step="10000" />
                 </div>
               </div>
               <div className="roi-row">
                 <span className="roi-field-label">Implementation Services</span>
                 <div className="field-input-wrap">
                   <span className="field-prefix">$</span>
-                  <input
-                    type="number"
-                    value={investment.impl}
-                    onChange={e => setInvestment(p => ({...p, impl: parseFloat(e.target.value)||0}))}
-                    step="5000"
-                  />
+                  <input type="number" value={investment.impl} onChange={e => setInvestment(p => ({...p, impl: parseFloat(e.target.value)||0}))} step="5000" />
                 </div>
               </div>
               <div className="roi-row">
                 <span className="roi-field-label">Internal FTE Hours</span>
-                <input
-                  type="number"
-                  value={investment.internal}
-                  onChange={e => setInvestment(p => ({...p, internal: parseFloat(e.target.value)||0}))}
-                  step="50"
-                />
-                <span className="text-muted text-sm">hrs × $150</span>
+                <input type="number" value={investment.internal} onChange={e => setInvestment(p => ({...p, internal: parseFloat(e.target.value)||0}))} step="50" />
+                <span style={{fontSize:12,color:'var(--t2)'}}>hrs × $150</span>
               </div>
               <div className="divider" />
               <div className="roi-row">
@@ -1504,48 +1688,22 @@
                 <span className="font-mono text-accent fw-700">{fC(totalInvestment)}</span>
               </div>
             </div>
-
             <div className="card">
               <div className="section-header">3-Year Value (from Calculator)</div>
-              <div className="roi-row">
-                <span className="roi-field-label">Y1 Value</span>
-                <span className="font-mono" style={{color:'var(--tx)'}}>{fC(totals.y1l)}–{fC(totals.y1h)}</span>
-              </div>
-              <div className="roi-row">
-                <span className="roi-field-label">Y2 Value</span>
-                <span className="font-mono" style={{color:'var(--tx)'}}>{fC(totals.y2l)}–{fC(totals.y2h)}</span>
-              </div>
-              <div className="roi-row">
-                <span className="roi-field-label">Y3 Value</span>
-                <span className="font-mono" style={{color:'var(--tx)'}}>{fC(totals.y3l)}–{fC(totals.y3h)}</span>
-              </div>
+              <div className="roi-row"><span className="roi-field-label">Y1 Value</span><span className="font-mono">{fC(totals.y1l)}–{fC(totals.y1h)}</span></div>
+              <div className="roi-row"><span className="roi-field-label">Y2 Value</span><span className="font-mono">{fC(totals.y2l)}–{fC(totals.y2h)}</span></div>
+              <div className="roi-row"><span className="roi-field-label">Y3 Value</span><span className="font-mono">{fC(totals.y3l)}–{fC(totals.y3h)}</span></div>
               <div className="divider" />
-              <div className="roi-row">
-                <span className="roi-field-label fw-600">3-Yr Total</span>
-                <span className="font-mono fw-700" style={{color:'var(--a2)'}}>{fC(totals.tl)}–{fC(totals.th)}</span>
-              </div>
+              <div className="roi-row"><span className="roi-field-label fw-600">3-Yr Total</span><span className="font-mono fw-700 text-accent">{fC(totals.tl)}–{fC(totals.th)}</span></div>
             </div>
           </div>
-
           <div>
             <div className="card">
               <div className="section-header">ROI Metrics</div>
-              <div className="roi-metric-row">
-                <span className="roi-metric-label">3-Year ROI Multiple</span>
-                <span className="roi-metric-value green">{roiLow.toFixed(1)}x – {roiHigh.toFixed(1)}x</span>
-              </div>
-              <div className="roi-metric-row">
-                <span className="roi-metric-label">Net NPV (3-Yr)</span>
-                <span className={`roi-metric-value ${netNpvLow >= 0 ? 'green' : 'red'}`}>
-                  {fC(netNpvLow)} – {fC(netNpvHigh)}
-                </span>
-              </div>
-              <div className="roi-metric-row" style={{borderBottom:'none'}}>
-                <span className="roi-metric-label">Payback Period</span>
-                <span className="roi-metric-value yellow">{paybackMonths > 0 ? `${paybackMonths} months` : '—'}</span>
-              </div>
+              <div className="roi-metric-row"><span className="roi-metric-label">3-Year ROI Multiple</span><span className="roi-metric-value green">{roiLow.toFixed(1)}x – {roiHigh.toFixed(1)}x</span></div>
+              <div className="roi-metric-row"><span className="roi-metric-label">Net NPV (3-Yr)</span><span className={`roi-metric-value ${netNpvLow >= 0 ? 'green' : ''}`}>{fC(netNpvLow)} – {fC(netNpvHigh)}</span></div>
+              <div className="roi-metric-row" style={{borderBottom:'none'}}><span className="roi-metric-label">Payback Period</span><span className="roi-metric-value yellow">{paybackMonths > 0 ? `${paybackMonths} months` : '—'}</span></div>
             </div>
-
             <div className="card">
               <div className="section-header">Value Waterfall</div>
               <div className="waterfall">
@@ -1588,7 +1746,7 @@
             {params.map(p => (
               <div key={p.k} className="assumption-row">
                 <div style={{flex:1}}>
-                  <div className="assumption-label">{p.label}</div>
+                  <div className="assumption-label-text">{p.label}</div>
                   <div className="assumption-note mt-8">{p.note}</div>
                 </div>
                 <div className="field-input-wrap">
@@ -1599,9 +1757,7 @@
                       const v = parseFloat(e.target.value) / 100;
                       setModel(prev => ({...prev, [p.k]: isNaN(v) ? 0 : v}));
                     }}
-                    step="0.5"
-                    min="0"
-                    max="100"
+                    step="0.5" min="0" max="100"
                   />
                   <span className="field-suffix">%</span>
                 </div>
@@ -1634,21 +1790,8 @@
     // -------------------------------------------------------------------------
     // Tab: Compare
     // -------------------------------------------------------------------------
-    function TabCompare({ snapState, versions, setVersions }) {
+    function TabCompare({ versions, setVersions }) {
       const [selectedVersions, setSelectedVersions] = useState([]);
-      const [snapshotName, setSnapshotName] = useState('');
-
-      function saveSnapshot() {
-        const name = snapshotName.trim() || `Snapshot ${versions.length + 1}`;
-        const snap = {
-          id: Date.now(),
-          name,
-          ts: new Date().toISOString(),
-          state: snapState(),
-        };
-        setVersions(prev => [...prev, snap]);
-        setSnapshotName('');
-      }
 
       function deleteVersion(id) {
         setVersions(prev => prev.filter(v => v.id !== id));
@@ -1678,14 +1821,12 @@
           const ucInp = {};
           (uc.steps || []).forEach(step => {
             (step.fields || []).forEach(f => {
-              const key = `${uc.id}_${f.k}`;
-              ucInp[f.k] = inp[key] !== undefined ? inp[key] : f.d;
+              ucInp[f.k] = inp[`${uc.id}_${f.k}`] !== undefined ? inp[`${uc.id}_${f.k}`] : f.d;
             });
           });
           if (uc.ai) {
             (uc.ai.fields || []).forEach(f => {
-              const key = `${uc.id}_${f.k}`;
-              ucInp[f.k] = inp[key] !== undefined ? inp[key] : f.d;
+              ucInp[f.k] = inp[`${uc.id}_${f.k}`] !== undefined ? inp[`${uc.id}_${f.k}`] : f.d;
             });
           }
           (uc.steps || []).forEach(step => {
@@ -1710,7 +1851,6 @@
         const vA = versions.find(v => v.id === selectedVersions[0]);
         const vB = versions.find(v => v.id === selectedVersions[1]);
         if (!vA || !vB) return null;
-
         const sA = vA.state || {};
         const sB = vB.state || {};
         const industryA = sA.industry || 'retail';
@@ -1718,7 +1858,6 @@
         const ucsA = LIB[industryA] || [];
         const ucsB = LIB[industryB] || [];
         const allUcIds = [...new Set([...ucsA.map(u => u.id), ...ucsB.map(u => u.id)])];
-
         return { vA, vB, allUcIds, ucsA, ucsB, sA, sB };
       }, [selectedVersions, versions]);
 
@@ -1743,60 +1882,37 @@
         return annual;
       }
 
+      if (versions.length === 0) {
+        return <div className="empty-state">No versions saved yet. Use the toolbar to save a version and start comparing.</div>;
+      }
+
       return (
         <div>
           <div className="card">
-            <div className="section-header">Save Snapshot</div>
-            <div style={{display:'flex',gap:10,alignItems:'center'}}>
-              <input
-                type="text"
-                className="company-input"
-                style={{width:260}}
-                placeholder="Snapshot name (e.g. 'Base Case')"
-                value={snapshotName}
-                onChange={e => setSnapshotName(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && saveSnapshot()}
-              />
-              <button className="btn btn-primary" onClick={saveSnapshot}>Save Current State</button>
-            </div>
+            <div className="section-header">Saved Versions (select up to 2 to compare)</div>
+            {versions.map(v => {
+              const total = getTotal(v);
+              const isSelected = selectedVersions.includes(v.id);
+              return (
+                <div key={v.id} className="version-item" style={isSelected ? {borderColor:'var(--ac)'} : {}}>
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => toggleSelect(v.id)}
+                    style={{accentColor:'var(--ac)'}}
+                  />
+                  <span className="version-name">{v.name}</span>
+                  <span className="version-ts">{new Date(v.ts).toLocaleString()}</span>
+                  {total && <span className="version-value">{fC(total.tl)}–{fC(total.th)}</span>}
+                  <button className="btn btn-sm btn-danger" onClick={() => deleteVersion(v.id)}>Delete</button>
+                </div>
+              );
+            })}
           </div>
-
-          {versions.length === 0 && (
-            <div className="empty-state">No snapshots saved yet. Save your first snapshot to start comparing.</div>
-          )}
-
-          {versions.length > 0 && (
-            <div className="card">
-              <div className="section-header">Saved Snapshots (select up to 2 to compare)</div>
-              {versions.map(v => {
-                const total = getTotal(v);
-                const isSelected = selectedVersions.includes(v.id);
-                return (
-                  <div key={v.id} className={`version-item ${isSelected ? 'active' : ''}`}
-                    style={isSelected ? {borderColor:'var(--ac)'} : {}}>
-                    <input
-                      type="checkbox"
-                      className="version-checkbox"
-                      checked={isSelected}
-                      onChange={() => toggleSelect(v.id)}
-                    />
-                    <span className="version-name">{v.name}</span>
-                    <span className="version-ts">{new Date(v.ts).toLocaleString()}</span>
-                    {total && (
-                      <span className="version-value">{fC(total.tl)}–{fC(total.th)}</span>
-                    )}
-                    <button className="btn btn-sm btn-danger" onClick={() => deleteVersion(v.id)}>Delete</button>
-                  </div>
-                );
-              })}
-            </div>
-          )}
 
           {diffPairs && (
             <div className="card">
-              <div className="section-header">
-                Comparison: {diffPairs.vA.name} vs {diffPairs.vB.name}
-              </div>
+              <div className="section-header">Comparison: {diffPairs.vA.name} vs {diffPairs.vB.name}</div>
               <table className="diff-table">
                 <thead>
                   <tr>
@@ -1839,7 +1955,7 @@
     // -------------------------------------------------------------------------
     // Tab: Admin
     // -------------------------------------------------------------------------
-    function TabAdmin({ theme, setTheme, customerMode, setCustomerMode, lockedFields, setLockedFields, industry, inputs, enabled, onReset, logoUrl, setLogoUrl }) {
+    function TabAdmin({ theme, setTheme, customerMode, setCustomerMode, lockedFields, setLockedFields, industry, inputs, enabled, onReset, logoUrl, setLogoUrl, showROI, setShowROI }) {
       const ucs = LIB[industry] || [];
       const assumptionFields = useMemo(() => {
         const fields = [];
@@ -1872,15 +1988,8 @@
             <div className="section-header">Theme</div>
             <div className="theme-grid">
               {Object.entries(THEMES).map(([tid, t]) => (
-                <div
-                  key={tid}
-                  className={`theme-swatch ${theme === tid ? 'active' : ''}`}
-                  onClick={() => setTheme(tid)}
-                >
-                  <div
-                    className="theme-color-block"
-                    style={{background: `linear-gradient(135deg, ${t.bg} 50%, ${t.accent} 100%)`}}
-                  />
+                <div key={tid} className={`theme-swatch ${theme === tid ? 'active' : ''}`} onClick={() => setTheme(tid)}>
+                  <div className="theme-color-block" style={{background: `linear-gradient(135deg, ${t.bg} 50%, ${t.accent} 100%)`}} />
                   <span className="theme-name">{t.label}</span>
                 </div>
               ))}
@@ -1896,6 +2005,16 @@
               </div>
               <label className="toggle-switch">
                 <input type="checkbox" checked={customerMode} onChange={e => setCustomerMode(e.target.checked)} />
+                <span className="toggle-slider" />
+              </label>
+            </div>
+            <div className="admin-row">
+              <div>
+                <div className="admin-label">Show ROI / TCO Tab</div>
+                <div className="admin-sublabel">Enables the ROI / TCO tab in the tab bar</div>
+              </div>
+              <label className="toggle-switch">
+                <input type="checkbox" checked={showROI} onChange={e => setShowROI(e.target.checked)} />
                 <span className="toggle-slider" />
               </label>
             </div>
@@ -1918,22 +2037,16 @@
           {assumptionFields.length > 0 && (
             <div className="card">
               <div className="section-header">Lock / Unlock Assumption Fields</div>
-              <p style={{fontSize:12,color:'var(--t2)',marginBottom:12}}>
-                Locked fields display as read-only in customer mode.
-              </p>
+              <p style={{fontSize:12,color:'var(--t2)',marginBottom:12}}>Locked fields display as read-only in customer mode.</p>
               <div style={{maxHeight:360,overflowY:'auto'}}>
                 {assumptionFields.map(item => (
-                  <div key={item.key} className="admin-row" style={{paddingLeft:0}}>
+                  <div key={item.key} className="admin-row">
                     <div style={{flex:1}}>
                       <div className="admin-label" style={{fontSize:12}}>{item.field.l}</div>
                       <div className="admin-sublabel">{item.ucName}</div>
                     </div>
                     <label className="toggle-switch">
-                      <input
-                        type="checkbox"
-                        checked={lockedFields.has(item.key)}
-                        onChange={() => toggleLock(item.key)}
-                      />
+                      <input type="checkbox" checked={lockedFields.has(item.key)} onChange={() => toggleLock(item.key)} />
                       <span className="toggle-slider" />
                     </label>
                   </div>
@@ -1945,19 +2058,13 @@
           <div className="card">
             <div className="section-header">Actions</div>
             <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-              <button className="btn" onClick={() => window.print()}>
-                Print / Save as PDF
-              </button>
+              <button className="btn" onClick={() => window.print()}>Print / Save as PDF</button>
               {!confirmReset ? (
-                <button className="btn btn-danger" onClick={() => setConfirmReset(true)}>
-                  Reset All Inputs
-                </button>
+                <button className="btn btn-danger" onClick={() => setConfirmReset(true)}>Reset All Inputs</button>
               ) : (
                 <div style={{display:'flex',gap:8,alignItems:'center'}}>
                   <span style={{fontSize:12,color:'var(--rd)'}}>Are you sure?</span>
-                  <button className="btn btn-danger" onClick={() => { onReset(); setConfirmReset(false); }}>
-                    Yes, Reset
-                  </button>
+                  <button className="btn btn-danger" onClick={() => { onReset(); setConfirmReset(false); }}>Yes, Reset</button>
                   <button className="btn" onClick={() => setConfirmReset(false)}>Cancel</button>
                 </div>
               )}
@@ -1974,7 +2081,7 @@
       const saved = loadState();
 
       const [industry, setIndustry] = useState(saved?.industry || 'retail');
-      const [activeTab, setActiveTab] = useState(saved?.activeTab || 'calculator');
+      const [activeTab, setActiveTab] = useState('calculator');
       const [company, setCompany] = useState(saved?.company || '');
       const [theme, setTheme] = useState(saved?.theme || 'amplitude');
       const [model, setModel] = useState(saved?.model || {...DEFAULT_MODEL});
@@ -1986,15 +2093,17 @@
         return init;
       });
       const [aiEnabled, setAiEnabled] = useState(saved?.aiEnabled || {});
+      const [globalAiEnabled, setGlobalAiEnabled] = useState(saved?.globalAiEnabled || false);
       const [customerMode, setCustomerMode] = useState(saved?.customerMode || false);
       const [lockedFields, setLockedFields] = useState(() => new Set(saved?.lockedFields || []));
       const [versions, setVersions] = useState(saved?.versions || []);
       const [investment, setInvestment] = useState(saved?.investment || { platform: 150000, impl: 50000, internal: 30000 });
       const [activeLens, setActiveLens] = useState(saved?.activeLens || 'financial');
-      const [solFilter, setSolFilter] = useState(saved?.solFilter || []);
       const [logoUrl, setLogoUrl] = useState(saved?.logoUrl || '');
+      const [showROI, setShowROI] = useState(saved?.showROI || false);
+      const [versionName, setVersionName] = useState('');
 
-      // When industry changes, enable all use cases that aren't already tracked
+      // When industry changes, enable new use cases
       useEffect(() => {
         setEnabled(prev => {
           const next = {...prev};
@@ -2029,12 +2138,12 @@
       // Persist state
       useEffect(() => {
         saveState({
-          industry, activeTab, company, theme, model, inputs,
-          enabled, aiEnabled, customerMode,
+          industry, company, theme, model, inputs,
+          enabled, aiEnabled, globalAiEnabled, customerMode,
           lockedFields: [...lockedFields],
-          versions, investment, activeLens, solFilter, logoUrl,
+          versions, investment, activeLens, logoUrl, showROI,
         });
-      }, [industry, activeTab, company, theme, model, inputs, enabled, aiEnabled, customerMode, lockedFields, versions, investment, activeLens, solFilter, logoUrl]);
+      }, [industry, company, theme, model, inputs, enabled, aiEnabled, globalAiEnabled, customerMode, lockedFields, versions, investment, activeLens, logoUrl, showROI]);
 
       function resetAll() {
         setInputs({});
@@ -2042,48 +2151,121 @@
         (LIB[industry] || []).forEach(uc => { init[uc.id] = true; });
         setEnabled(init);
         setAiEnabled({});
+        setGlobalAiEnabled(false);
         setModel({...DEFAULT_MODEL});
         setInvestment({ platform: 150000, impl: 50000, internal: 30000 });
         setLockedFields(new Set());
       }
 
-      function snapState() {
-        return { industry, company, model, inputs, enabled, aiEnabled, investment };
+      function saveVersion() {
+        if (!versionName.trim()) return;
+        const snap = {
+          id: Date.now(),
+          name: versionName.trim(),
+          ts: Date.now(),
+          state: { industry, company, model, inputs, enabled, aiEnabled, investment },
+        };
+        setVersions(prev => [...prev, snap]);
+        setVersionName('');
       }
 
       const tabs = [
         { id: 'calculator', label: 'Calculator' },
         { id: 'summary', label: 'Summary' },
-        { id: 'roi', label: 'ROI / TCO' },
         { id: 'assumptions', label: 'Assumptions' },
-        { id: 'compare', label: 'Compare' },
-        ...(!customerMode ? [{ id: 'admin', label: 'Admin ⚙' }] : []),
+        ...(!customerMode ? [{ id: 'admin', label: 'Admin' }] : []),
+        ...(showROI ? [{ id: 'roi', label: 'ROI / TCO' }] : []),
+        ...(versions.length >= 2 ? [{ id: 'compare', label: 'Compare' }] : []),
       ];
 
-      const currentTheme = THEMES[theme] || THEMES.amplitude;
+      const anyAiEnabled = Object.values(aiEnabled).some(Boolean);
 
       return (
         <div>
-          <header className="header">
+          {/* ── Header Row 1 ── */}
+          <header className="header1 no-print">
             {customerMode && logoUrl ? (
-              <img src={logoUrl} alt="Logo" className="header-logo-img" />
+              <img src={logoUrl} alt="Logo" className="header1-logo-img" />
             ) : (
-              <span className="header-logo">Amplitude</span>
+              <>
+                <div className="header1-logo-circle">A</div>
+                <span className="header1-title">Amplitude Value Calculator</span>
+              </>
             )}
-            <span className="header-divider" />
-            <span className="header-subtitle">Value Calculator</span>
-            {company && <span className="header-company">{company}</span>}
-            {customerMode && (
-              <button
-                onClick={() => setCustomerMode(false)}
-                style={{marginLeft:'auto',fontSize:11,padding:'4px 10px',borderRadius:6,border:'1px solid var(--bd)',background:'transparent',color:'var(--t2)',cursor:'pointer',fontFamily:'inherit'}}
-                title="Exit customer mode and restore Admin tab"
-              >
-                ⚙ Admin
-              </button>
-            )}
+
+            <div className="header1-right">
+              {/* Segmented lens */}
+              <div className="lens-seg">
+                {[['financial','Financial'],['outcomes','Outcomes'],['kpi','KPI Impact']].map(([id, lbl]) => (
+                  <button
+                    key={id}
+                    className={`lens-seg-btn ${activeLens === id ? 'active' : ''}`}
+                    onClick={() => setActiveLens(id)}
+                  >
+                    {lbl}
+                  </button>
+                ))}
+              </div>
+
+              {/* AI Value toggle */}
+              <label className="ai-toggle-label">
+                <label className="toggle-switch" style={{pointerEvents:'none'}}>
+                  <input type="checkbox" checked={anyAiEnabled} onChange={() => {}} />
+                  <span className="toggle-slider" />
+                </label>
+                <span style={{color: anyAiEnabled ? 'var(--a2)' : 'var(--t2)'}}>AI Value</span>
+              </label>
+
+              {customerMode && (
+                <button className="admin-escape-btn" onClick={() => setCustomerMode(false)} title="Exit customer mode">
+                  ⚙ Admin
+                </button>
+              )}
+            </div>
           </header>
 
+          {/* ── Header Row 2 (toolbar) ── */}
+          <div className="header2 no-print">
+            <div className="toolbar-group">
+              <span className="toolbar-label">CUSTOMER</span>
+              <input
+                type="text"
+                className="toolbar-input"
+                placeholder="Name or Opp ID"
+                value={company}
+                onChange={e => setCompany(e.target.value)}
+              />
+            </div>
+
+            <div className="toolbar-group">
+              <span className="toolbar-label">INDUSTRY</span>
+              <div className="toolbar-pills">
+                {INDUSTRIES.map(ind => (
+                  <button
+                    key={ind.id}
+                    className={`toolbar-pill ${industry === ind.id ? 'active' : ''}`}
+                    onClick={() => setIndustry(ind.id)}
+                  >
+                    {ind.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="toolbar-version-group">
+              <input
+                type="text"
+                className="toolbar-version-input"
+                placeholder="Version name"
+                value={versionName}
+                onChange={e => setVersionName(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && saveVersion()}
+              />
+              <button className="btn btn-primary" style={{fontSize:12}} onClick={saveVersion}>Save</button>
+            </div>
+          </div>
+
+          {/* ── Tab nav ── */}
           <nav className="tab-nav no-print">
             {tabs.map(tab => (
               <button
@@ -2096,17 +2278,11 @@
             ))}
           </nav>
 
+          {/* ── Tab content ── */}
           <main className="main">
             <div className={`tab-content ${activeTab === 'calculator' ? 'active' : ''}`}>
               <TabCalculator
                 industry={industry}
-                setIndustry={setIndustry}
-                company={company}
-                setCompany={setCompany}
-                solFilter={solFilter}
-                setSolFilter={setSolFilter}
-                activeLens={activeLens}
-                setActiveLens={setActiveLens}
                 model={model}
                 inputs={inputs}
                 setInputs={setInputs}
@@ -2116,6 +2292,9 @@
                 setAiEnabled={setAiEnabled}
                 customerMode={customerMode}
                 lockedFields={lockedFields}
+                activeLens={activeLens}
+                company={company}
+                globalAiEnabled={globalAiEnabled}
               />
             </div>
 
@@ -2130,28 +2309,8 @@
               />
             </div>
 
-            <div className={`tab-content ${activeTab === 'roi' ? 'active' : ''}`}>
-              <TabROI
-                industry={industry}
-                model={model}
-                inputs={inputs}
-                enabled={enabled}
-                aiEnabled={aiEnabled}
-                investment={investment}
-                setInvestment={setInvestment}
-              />
-            </div>
-
             <div className={`tab-content ${activeTab === 'assumptions' ? 'active' : ''}`}>
               <TabAssumptions model={model} setModel={setModel} />
-            </div>
-
-            <div className={`tab-content ${activeTab === 'compare' ? 'active' : ''}`}>
-              <TabCompare
-                snapState={snapState}
-                versions={versions}
-                setVersions={setVersions}
-              />
             </div>
 
             {!customerMode && (
@@ -2169,6 +2328,31 @@
                   onReset={resetAll}
                   logoUrl={logoUrl}
                   setLogoUrl={setLogoUrl}
+                  showROI={showROI}
+                  setShowROI={setShowROI}
+                />
+              </div>
+            )}
+
+            {showROI && (
+              <div className={`tab-content ${activeTab === 'roi' ? 'active' : ''}`}>
+                <TabROI
+                  industry={industry}
+                  model={model}
+                  inputs={inputs}
+                  enabled={enabled}
+                  aiEnabled={aiEnabled}
+                  investment={investment}
+                  setInvestment={setInvestment}
+                />
+              </div>
+            )}
+
+            {versions.length >= 2 && (
+              <div className={`tab-content ${activeTab === 'compare' ? 'active' : ''}`}>
+                <TabCompare
+                  versions={versions}
+                  setVersions={setVersions}
                 />
               </div>
             )}
@@ -2180,14 +2364,11 @@
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
 
-  <!-- Data loader: imports data.js, transpiles app source, renders -->
   <script type="module">
     import { INDUSTRIES, SOLUTIONS, DEFAULT_MODEL, THEMES, LIB, fC, fN, fP, tyCalc, addTotals, generateNarrative } from './data.js';
     window.__AVC__ = { INDUSTRIES, SOLUTIONS, DEFAULT_MODEL, THEMES, LIB, fC, fN, fP, tyCalc, addTotals, generateNarrative };
-
     const src = document.getElementById('app-source').textContent;
     const result = Babel.transform(src, { presets: ['react'] });
-    // eslint-disable-next-line no-eval
     (0, eval)(result.code);
   </script>
 </body>

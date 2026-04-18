@@ -1085,9 +1085,8 @@
     // -------------------------------------------------------------------------
     // UseCaseCard
     // -------------------------------------------------------------------------
-    function UseCaseCard({ uc, onChange, enabled, onToggle, aiEnabled, onAiToggle, model, customerMode, lockedFields, activeLens, company, inputs, globalAiEnabled }) {
+    function UseCaseCard({ uc, onChange, enabled, onToggle, aiEnabled, onAiToggle, model, customerMode, lockedFields, activeLens, company, inputs, globalAiEnabled, activeSols, onSolToggle }) {
       const [expanded, setExpanded] = useState(false);
-      const [localSols, setLocalSols] = useState(uc.sol || []);
 
       const solMap = useMemo(() => {
         const m = {};
@@ -1167,9 +1166,7 @@
       }
 
       function toggleLocalSol(sid) {
-        setLocalSols(prev =>
-          prev.includes(sid) ? prev.filter(x => x !== sid) : [...prev, sid]
-        );
+        onSolToggle(uc.id, sid);
       }
 
       return (
@@ -1186,7 +1183,7 @@
             {uc.cat && (
               <span className={`uc-cat ${catClass(uc.cat)}`}>{uc.cat}</span>
             )}
-            {localSols.slice(0, 3).map(sid => {
+            {activeSols.slice(0, 3).map(sid => {
               const s = solMap[sid];
               if (!s) return null;
               return (
@@ -1224,7 +1221,7 @@
                 <div className="platform-sol-label">PLATFORM SOLUTIONS (click to add/remove)</div>
                 <div className="platform-sol-pills">
                   {NON_AI_SOLUTIONS.map(s => {
-                    const isActive = localSols.includes(s.id);
+                    const isActive = activeSols.includes(s.id);
                     return (
                       <button
                         key={s.id}
@@ -1465,6 +1462,8 @@
               activeLens={activeLens}
               company={company}
               globalAiEnabled={globalAiEnabled}
+              activeSols={ucSolutions[uc.id] || uc.sol || []}
+              onSolToggle={handleSolToggle}
             />
           ))}
         </div>
@@ -1727,7 +1726,7 @@
     // -------------------------------------------------------------------------
     // Tab: Assumptions
     // -------------------------------------------------------------------------
-    function TabAssumptions({ model, setModel }) {
+    function TabAssumptions({ model, setModel, customerMode }) {
       const params = [
         { k: 'dr', label: 'Discount Rate', note: 'Forrester TEI 2023 standard discount rate for NPV calculations', pct: true },
         { k: 'ra', label: 'Risk Adjustment', note: 'Forrester TEI 2023: applied to create conservative (low) band', pct: true },
@@ -1742,6 +1741,7 @@
             <div className="section-header">Model Parameters</div>
             <p style={{fontSize:12,color:'var(--t2)',marginBottom:16,lineHeight:1.6}}>
               These parameters affect all calculations. Defaults follow <strong style={{color:'var(--tx)'}}>Forrester TEI 2023</strong> methodology for NPV and risk adjustment.
+              {customerMode && <span style={{marginLeft:8,color:'var(--yl)',fontSize:11}}>🔒 View-only in customer mode</span>}
             </p>
             {params.map(p => (
               <div key={p.k} className="assumption-row">
@@ -1749,6 +1749,11 @@
                   <div className="assumption-label-text">{p.label}</div>
                   <div className="assumption-note mt-8">{p.note}</div>
                 </div>
+                {customerMode ? (
+                  <span style={{fontFamily:'var(--mono)',fontSize:14,fontWeight:600,color:'var(--tx)',minWidth:60,textAlign:'right'}}>
+                    {parseFloat(((model[p.k] || 0) * 100).toFixed(1))}%
+                  </span>
+                ) : (
                 <div className="field-input-wrap">
                   <input
                     type="number"
@@ -1761,6 +1766,7 @@
                   />
                   <span className="field-suffix">%</span>
                 </div>
+                )}
               </div>
             ))}
           </div>
@@ -2102,6 +2108,12 @@
       const [logoUrl, setLogoUrl] = useState(saved?.logoUrl || '');
       const [showROI, setShowROI] = useState(saved?.showROI || false);
       const [versionName, setVersionName] = useState('');
+      const [ucSolutions, setUcSolutions] = useState(() => {
+        if (saved?.ucSolutions) return saved.ucSolutions;
+        const init = {};
+        Object.values(LIB).flat().forEach(uc => { init[uc.id] = [...(uc.sol || [])]; });
+        return init;
+      });
 
       // When industry changes, enable new use cases
       useEffect(() => {
@@ -2141,9 +2153,9 @@
           industry, company, theme, model, inputs,
           enabled, aiEnabled, globalAiEnabled, customerMode,
           lockedFields: [...lockedFields],
-          versions, investment, activeLens, logoUrl, showROI,
+          versions, investment, activeLens, logoUrl, showROI, ucSolutions,
         });
-      }, [industry, company, theme, model, inputs, enabled, aiEnabled, globalAiEnabled, customerMode, lockedFields, versions, investment, activeLens, logoUrl, showROI]);
+      }, [industry, company, theme, model, inputs, enabled, aiEnabled, globalAiEnabled, customerMode, lockedFields, versions, investment, activeLens, logoUrl, showROI, ucSolutions]);
 
       function resetAll() {
         setInputs({});
@@ -2155,6 +2167,17 @@
         setModel({...DEFAULT_MODEL});
         setInvestment({ platform: 150000, impl: 50000, internal: 30000 });
         setLockedFields(new Set());
+        const solInit = {};
+        Object.values(LIB).flat().forEach(uc => { solInit[uc.id] = [...(uc.sol || [])]; });
+        setUcSolutions(solInit);
+      }
+
+      function handleSolToggle(ucId, solId) {
+        setUcSolutions(prev => {
+          const cur = prev[ucId] || [];
+          const next = cur.includes(solId) ? cur.filter(s => s !== solId) : [...cur, solId];
+          return { ...prev, [ucId]: next };
+        });
       }
 
       function saveVersion() {
@@ -2310,7 +2333,7 @@
             </div>
 
             <div className={`tab-content ${activeTab === 'assumptions' ? 'active' : ''}`}>
-              <TabAssumptions model={model} setModel={setModel} />
+              <TabAssumptions model={model} setModel={setModel} customerMode={customerMode} />
             </div>
 
             {!customerMode && (

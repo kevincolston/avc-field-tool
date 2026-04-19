@@ -5,12 +5,11 @@
 // INDUSTRIES
 // ---------------------------------------------------------------------------
 const INDUSTRIES = [
-  { id: "retail",        label: "Retail / E-Commerce" },
-  { id: "saas",          label: "SaaS / Tech" },
-  { id: "finserv",       label: "Financial Services" },
-  { id: "media",         label: "Media / Entertainment" },
-  { id: "proserv",       label: "Prof. & Business Services" },
-  { id: "manufacturing", label: "Manufacturing" },
+  { id: "retail",  label: "Retail / E-Commerce" },
+  { id: "saas",    label: "SaaS / Tech" },
+  { id: "finserv", label: "Financial Services" },
+  { id: "media",   label: "Media / Entertainment" },
+  { id: "proserv", label: "Prof. & Business Services" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -260,7 +259,7 @@ const LIB = {
           id: "s2",
           label: "Revenue Impact",
           fields: [
-            { k: "aov", l: "Avg Order Value", d: 85, u: "$", s: "input" },
+            { k: "aov", l: "Avg Order Value", d: 120, u: "$", s: "input" },
           ],
           fn: (v, p) => p * v.aov,
           ft: "Additional Conversions × AOV",
@@ -391,7 +390,7 @@ const LIB = {
           label: "Customers in Scope",
           fields: [
             { k: "loy", l: "Loyalty Members",             d: 2000000, u: "cust", s: "input" },
-            { k: "nl",  l: "Non-Loyalty Active",          d: 500000,  u: "cust", s: "input" },
+            { k: "nl",  l: "Non-Loyalty Active",          d: 3000000, u: "cust", s: "input" },
             { k: "ir",  l: "Monetization Impact Rate",    d: 0.10,    u: "%",    s: "assumption", n: "Forrester TEI 2023: 40% monetization improvement; apply conservatively" },
           ],
           fn: (v) => (v.loy + v.nl) * v.ir,
@@ -462,7 +461,7 @@ const LIB = {
           id: "s1",
           label: "Conversions",
           fields: [
-            { k: "pool", l: "Non-Loyalty Active Customers",   d: 500000, u: "cust", s: "input" },
+            { k: "pool", l: "Non-Loyalty Active Customers",   d: 3000000, u: "cust", s: "input" },
             { k: "cv",   l: "Enrollment Conversion Rate",     d: 0.15,   u: "%",    s: "assumption", n: "Conservative; Amplitude helps target high-intent shoppers" },
           ],
           fn: (v) => v.pool * v.cv,
@@ -475,7 +474,7 @@ const LIB = {
           id: "s2",
           label: "Revenue",
           fields: [
-            { k: "rv", l: "Incremental Rev / New Member", d: 45, u: "$", s: "assumption", n: "Loyalty members spend ~2x more; $45 incremental conservatively" },
+            { k: "rv", l: "Incremental Rev / New Member", d: 75, u: "$", s: "assumption", n: "Loyalty members spend ~2x more; $75 incremental conservatively" },
           ],
           fn: (v, p) => p * v.rv,
           ft: "New Members × Incremental Rev",
@@ -587,7 +586,7 @@ const LIB = {
               id: "s1",
               label: "Redundant Spend",
               fields: [
-                { k: "sp", l: "Redundant Software Spend", d: 500000, u: "$", s: "input", n: "Legacy BI, analytics, experimentation tools" },
+                { k: "sp", l: "Redundant Software Spend", d: 1500000, u: "$", s: "input", n: "Legacy BI, analytics, experimentation tools" },
               ],
               fn: (v) => v.sp,
               ft: "Redundant Software Spend",
@@ -635,7 +634,7 @@ const LIB = {
           id: "s1",
           label: "Redundant Spend",
           fields: [
-            { k: "sp", l: "Redundant Software Spend", d: 500000, u: "$", s: "input", n: "Legacy BI, analytics, experimentation tools" },
+            { k: "sp", l: "Redundant Software Spend", d: 1500000, u: "$", s: "input", n: "Legacy BI, analytics, experimentation tools" },
           ],
           fn: (v) => v.sp,
           ft: "Redundant Software Spend",
@@ -755,7 +754,7 @@ const LIB = {
           fields: [
             { k: "acc", l: "Total Accounts",                  d: 2000,   u: "n",  s: "input" },
             { k: "el",  l: "% Eligible for Expansion",        d: 0.25,   u: "%",  s: "assumption" },
-            { k: "val", l: "Avg Expansion Value",             d: 15000,  u: "$",  s: "assumption" },
+            { k: "val", l: "Avg Expansion Value",             d: 35000,  u: "$",  s: "assumption" },
             { k: "cv",  l: "Conversion Rate",                 d: 0.20,   u: "%",  s: "assumption" },
           ],
           fn: (v) => v.acc * v.el * v.val * v.cv,
@@ -793,11 +792,11 @@ const LIB = {
           id: "s1",
           label: "Productivity Value",
           fields: [
-            { k: "ftes", l: "FTEs Impacted",             d: 20,     u: "FTEs", s: "input" },
+            { k: "ftes", l: "FTEs Impacted",             d: 50,     u: "FTEs", s: "input" },
             { k: "sal",  l: "Annual Salary + Benefits",   d: 160000, u: "$",    s: "assumption" },
             { k: "pw",   l: "% of Work Impacted",         d: 0.15,   u: "%",    s: "assumption", n: "Forrester TEI: 50% ad-hoc reduction" },
             { k: "imp",  l: "Productivity Improvement",   d: 0.80,   u: "%",    s: "assumption" },
-            { k: "va",   l: "Value Add Rate",             d: 0.50,   u: "%",    s: "assumption" },
+            { k: "va",   l: "Value Add Rate",             d: 0.60,   u: "%",    s: "assumption", n: "Forrester TEI standard: 60% of recaptured time redirected to higher-value work" },
           ],
           fn: (v) => v.sal * v.pw * v.imp * v.va * v.ftes,
           ft: "Salary × % Work × Improvement × Value Add × FTEs",
@@ -818,7 +817,58 @@ const LIB = {
     },
 
     // -----------------------------------------------------------------------
-    // 4. Tech Consolidation
+    // 4. Free Trial / PLG Activation
+    // -----------------------------------------------------------------------
+    {
+      id: "splg",
+      name: "Free Trial / PLG Activation",
+      cat: "Revenue Growth",
+      sol: ["analytics", "experiment", "guides", "flags"],
+      desc: "Identify the 'aha moment' in free trials and remove friction to convert more trials into paid customers.",
+      ifThen: "If Amplitude improves {company}'s free trial activation rate by {rate} — surfacing the aha moment and removing friction before it — {company} could convert {customers} additional trials to paid customers annually, generating {value} in net new ARR.",
+      benchmarkNote: "PLG benchmark: median trial-to-paid 15-25%; Amplitude identifies activation milestones that predict conversion (Forrester TEI: +9% acquisition improvement)",
+      ops: {
+        fn: (v) => v.trials * v.cur * v.imp * 12,
+        label: "Additional Paid Conversions / Yr",
+        unit: "customers",
+      },
+      kpi: {
+        fn: (v) => v.imp,
+        label: "Trial Activation Rate Improvement",
+        unit: "%",
+      },
+      steps: [
+        {
+          id: "s1",
+          label: "Additional Paid Customers",
+          fields: [
+            { k: "trials", l: "Monthly Free Trials Started",  d: 5000,  u: "n",  s: "input" },
+            { k: "cur",    l: "Current Trial-to-Paid Rate",   d: 0.15,  u: "%",  s: "input" },
+            { k: "imp",    l: "Activation Rate Improvement",  d: 0.15,  u: "%",  s: "assumption", n: "Amplitude identifies aha moments; Forrester TEI: +9% acquisition improvement" },
+          ],
+          fn: (v) => v.trials * v.cur * v.imp * 12,
+          ft: "Trials × Current Rate × Improvement × 12",
+          rl: "Additional Paid Customers / Yr",
+          ru: "n",
+          fin: false,
+        },
+        {
+          id: "s2",
+          label: "Net New ARR",
+          fields: [
+            { k: "acv", l: "Avg Contract Value (ACV)", d: 15000, u: "$", s: "assumption" },
+          ],
+          fn: (v, p) => p * v.acv,
+          ft: "New Customers × ACV",
+          rl: "Net New ARR (100%)",
+          ru: "$",
+          fin: true,
+        },
+      ],
+    },
+
+    // -----------------------------------------------------------------------
+    // 5. Tech Consolidation
     // -----------------------------------------------------------------------
     {
       id: "stc",
@@ -843,7 +893,7 @@ const LIB = {
           id: "s1",
           label: "Tech Consolidation Savings",
           fields: [
-            { k: "sp", l: "Redundant Analytics / Experimentation Spend", d: 300000, u: "$",  s: "input" },
+            { k: "sp", l: "Redundant Analytics / Experimentation Spend", d: 800000, u: "$",  s: "input" },
             { k: "rd", l: "% Reduction",                                  d: 0.40,   u: "%",  s: "assumption" },
           ],
           fn: (v) => v.sp * v.rd,
@@ -1014,7 +1064,70 @@ const LIB = {
     },
 
     // -----------------------------------------------------------------------
-    // 4. Productivity & Efficiency
+    // 4. Cross-Sell / Wallet Share
+    // -----------------------------------------------------------------------
+    {
+      id: "fcs",
+      name: "Cross-Sell / Wallet Share",
+      cat: "Revenue Growth",
+      sol: ["analytics", "cdp", "guides", "experiment"],
+      desc: "Use behavioral signals to identify customers ready for additional products and deliver personalized cross-sell offers.",
+      ifThen: "If Amplitude surfaces cross-sell signals for {rate} of {company}'s digital customer base, converting {cvr} of those to a second product, {company} could generate {value} in incremental annual profit.",
+      benchmarkNote: "Banks capture ~20% of customer wallet share; personalization improves cross-sell conversion 3-5x vs. mass outreach",
+      ops: {
+        fn: (v) => v.cust * v.el * v.cv,
+        label: "Customers Cross-Sold",
+        unit: "customers",
+      },
+      kpi: {
+        fn: (v) => v.el,
+        label: "Eligible for Cross-Sell",
+        unit: "%",
+      },
+      steps: [
+        {
+          id: "s1",
+          label: "Customers Cross-Sold",
+          fields: [
+            { k: "cust", l: "Digital Active Customers",     d: 1000000, u: "n",  s: "input" },
+            { k: "el",   l: "% Eligible for Cross-Sell",    d: 0.20,    u: "%",  s: "assumption", n: "Behavioral signals: product usage + lifecycle stage" },
+            { k: "cv",   l: "Cross-Sell Conversion Rate",   d: 0.15,    u: "%",  s: "assumption", n: "Personalized targeting; 3-5x vs. mass outreach" },
+          ],
+          fn: (v) => v.cust * v.el * v.cv,
+          ft: "Customers × Eligible% × Conversion Rate",
+          rl: "Customers Cross-Sold",
+          ru: "n",
+          fin: false,
+        },
+        {
+          id: "s2",
+          label: "Incremental Revenue",
+          fields: [
+            { k: "arpu", l: "Annual Revenue / New Product", d: 600, u: "$", s: "assumption", n: "Incremental product revenue per cross-sold customer" },
+          ],
+          fn: (v, p) => p * v.arpu,
+          ft: "Customers × Annual Rev per Product",
+          rl: "Annual Incremental Revenue",
+          ru: "$",
+          fin: false,
+        },
+        {
+          id: "s3",
+          label: "Profit Impact",
+          fields: [
+            { k: "m", l: "Net Margin", d: 0.25, u: "%", s: "assumption" },
+          ],
+          fn: (v, p) => p * v.m,
+          ft: "Revenue × Margin",
+          rl: "Annual Profit Impact (100%)",
+          ru: "$",
+          fin: true,
+        },
+      ],
+    },
+
+    // -----------------------------------------------------------------------
+    // 5. Productivity & Efficiency
     // -----------------------------------------------------------------------
     {
       id: "fp",
@@ -1043,7 +1156,7 @@ const LIB = {
             { k: "sal",  l: "Annual Salary + Benefits", d: 175000, u: "$",    s: "assumption" },
             { k: "pw",   l: "% of Work Impacted",       d: 0.10,   u: "%",    s: "assumption", n: "Forrester TEI: 50% ad-hoc reduction" },
             { k: "imp",  l: "Productivity Improvement", d: 0.80,   u: "%",    s: "assumption" },
-            { k: "va",   l: "Value Add Rate",           d: 0.50,   u: "%",    s: "assumption" },
+            { k: "va",   l: "Value Add Rate",           d: 0.60,   u: "%",    s: "assumption", n: "Forrester TEI standard: 60% of recaptured time redirected to higher-value work" },
           ],
           fn: (v) => v.sal * v.pw * v.imp * v.va * v.ftes,
           ft: "Salary × % Work × Improvement × Value Add × FTEs",
@@ -1098,7 +1211,7 @@ const LIB = {
           fields: [
             { k: "sub",  l: "Total Subscribers",                    d: 1000000, u: "cust", s: "input" },
             { k: "arpu", l: "Monthly ARPU",                         d: 12,      u: "$",    s: "input" },
-            { k: "ch",   l: "Monthly Churn Rate",                   d: 0.04,    u: "%",    s: "input" },
+            { k: "ch",   l: "Monthly Churn Rate",                   d: 0.025,   u: "%",    s: "input" },
             { k: "rd",   l: "Churn Reduction with Amplitude",       d: 0.12,    u: "%",    s: "assumption", n: "Forrester TEI: 15% avg; NBC: 2x retention" },
           ],
           fn: (v) => v.sub * v.arpu * 12 * v.ch * v.rd,
@@ -1187,7 +1300,7 @@ const LIB = {
           id: "s1",
           label: "Engagement Revenue",
           fields: [
-            { k: "mau",    l: "Monthly Active Users",          d: 500000, u: "n",  s: "input" },
+            { k: "mau",    l: "Monthly Active Users",          d: 1500000, u: "n",  s: "input" },
             { k: "eng",    l: "Current Engagement Rate",       d: 0.45,   u: "%",  s: "input" },
             { k: "imp",    l: "Engagement Improvement",        d: 0.15,   u: "%",  s: "assumption", n: "Viewers spend 10.5 min searching; 20% churn due to content friction" },
             { k: "arpu_m", l: "Monthly ARPU",                  d: 12,     u: "$",  s: "input" },
@@ -1202,7 +1315,46 @@ const LIB = {
     },
 
     // -----------------------------------------------------------------------
-    // 4. Productivity
+    // 4. Ad Revenue Optimization
+    // -----------------------------------------------------------------------
+    {
+      id: "mad",
+      name: "Ad Revenue Optimization",
+      cat: "Revenue Growth",
+      sol: ["analytics", "cdp", "experiment"],
+      desc: "Increase ad revenue by improving audience segmentation, engagement depth, and 1st-party data quality.",
+      ifThen: "If Amplitude improves {company}'s audience data quality and content engagement — enabling {rate} higher ad yield — {company} could generate {value} in incremental annual ad revenue.",
+      benchmarkNote: "1st-party data commands 2-3x CPM premium; engagement depth directly drives ad inventory yield",
+      ops: {
+        fn: (v) => v.mau,
+        label: "Monthly Active Users Impacted",
+        unit: "users",
+      },
+      kpi: {
+        fn: (v) => v.imp,
+        label: "Ad Revenue Yield Improvement",
+        unit: "%",
+      },
+      steps: [
+        {
+          id: "s1",
+          label: "Incremental Ad Revenue",
+          fields: [
+            { k: "adr", l: "Annual Ad Revenue",  d: 50000000, u: "$", s: "input" },
+            { k: "mau", l: "Monthly Active Users", d: 5000000, u: "n", s: "input", n: "Drives audience data quality and targeting depth" },
+            { k: "imp", l: "Yield Improvement",    d: 0.10,    u: "%", s: "assumption", n: "1st-party data + engagement depth drives CPM premium; 2-3x vs. 3rd-party" },
+          ],
+          fn: (v) => v.adr * v.imp,
+          ft: "Annual Ad Revenue × Yield Improvement",
+          rl: "Incremental Ad Revenue (100%)",
+          ru: "$",
+          fin: true,
+        },
+      ],
+    },
+
+    // -----------------------------------------------------------------------
+    // 5. Productivity
     // -----------------------------------------------------------------------
     {
       id: "mprod",
@@ -1227,11 +1379,11 @@ const LIB = {
           id: "s1",
           label: "Productivity Value",
           fields: [
-            { k: "ftes", l: "FTEs Impacted",           d: 20,     u: "FTEs", s: "input" },
+            { k: "ftes", l: "FTEs Impacted",           d: 35,     u: "FTEs", s: "input" },
             { k: "sal",  l: "Annual Salary + Benefits", d: 150000, u: "$",    s: "assumption" },
             { k: "pw",   l: "% of Work Impacted",       d: 0.12,   u: "%",    s: "assumption" },
             { k: "imp",  l: "Productivity Improvement", d: 0.80,   u: "%",    s: "assumption" },
-            { k: "va",   l: "Value Add Rate",           d: 0.50,   u: "%",    s: "assumption" },
+            { k: "va",   l: "Value Add Rate",           d: 0.60,   u: "%",    s: "assumption", n: "Forrester TEI standard: 60% of recaptured time redirected to higher-value work" },
           ],
           fn: (v) => v.sal * v.pw * v.imp * v.va * v.ftes,
           ft: "Salary × % Work × Improvement × Value Add × FTEs",
@@ -1275,7 +1427,7 @@ const LIB = {
           id: "s1",
           label: "Profit Preserved",
           fields: [
-            { k: "rv", l: "Client Revenue",                      d: 200000000, u: "$",  s: "input" },
+            { k: "rv", l: "Client Revenue",                      d: 500000000, u: "$",  s: "input" },
             { k: "ch", l: "Client Churn Rate",                   d: 0.10,      u: "%",  s: "input" },
             { k: "rd", l: "Reduction with Amplitude",            d: 0.12,      u: "%",  s: "assumption" },
             { k: "m",  l: "Margin",                              d: 0.20,      u: "%",  s: "assumption" },
@@ -1318,7 +1470,7 @@ const LIB = {
             { k: "leads", l: "Monthly Qualified Leads",           d: 500,   u: "n",  s: "input" },
             { k: "cv",    l: "Current Digital Conversion Rate",   d: 0.08,  u: "%",  s: "input" },
             { k: "imp",   l: "Conversion Improvement",            d: 0.15,  u: "%",  s: "assumption" },
-            { k: "val",   l: "Avg Client Value",                  d: 50000, u: "$",  s: "assumption" },
+            { k: "val",   l: "Avg Client Value",                  d: 100000, u: "$",  s: "assumption" },
           ],
           fn: (v) => v.leads * v.cv * v.imp * 12 * v.val,
           ft: "Leads × CVR × Improvement × 12 × Client Value",
@@ -1355,139 +1507,11 @@ const LIB = {
           id: "s1",
           label: "Productivity Value",
           fields: [
-            { k: "ftes", l: "FTEs Impacted",           d: 25,     u: "FTEs", s: "input" },
+            { k: "ftes", l: "FTEs Impacted",           d: 40,     u: "FTEs", s: "input" },
             { k: "sal",  l: "Annual Salary + Benefits", d: 150000, u: "$",    s: "assumption" },
             { k: "pw",   l: "% of Work Impacted",       d: 0.10,   u: "%",    s: "assumption" },
             { k: "imp",  l: "Productivity Improvement", d: 0.80,   u: "%",    s: "assumption" },
-            { k: "va",   l: "Value Add Rate",           d: 0.50,   u: "%",    s: "assumption" },
-          ],
-          fn: (v) => v.sal * v.pw * v.imp * v.va * v.ftes,
-          ft: "Salary × % Work × Improvement × Value Add × FTEs",
-          rl: "Total Productivity Value (100%)",
-          ru: "$",
-          fin: true,
-        },
-      ],
-    },
-
-  ],
-
-  // =========================================================================
-  // MANUFACTURING
-  // =========================================================================
-  manufacturing: [
-
-    // -----------------------------------------------------------------------
-    // 1. Digital Sales Conversion
-    // -----------------------------------------------------------------------
-    {
-      id: "md",
-      name: "Digital Sales Conversion",
-      cat: "Revenue Growth",
-      sol: ["analytics", "experiment", "replay", "guides"],
-      desc: "Optimize digital quoting and ordering flows to capture more revenue from the existing pipeline.",
-      ifThen: "If Amplitude improves {company}'s digital quoting and ordering conversion rate by {rate}, {company} could capture {value} in additional annual revenue from its existing digital pipeline.",
-      benchmarkNote: "Forrester TEI 2023: 9% acquisition improvement; digital ordering reduces friction vs. rep-assisted",
-      ops: {
-        fn: (v) => v.qt * 12 * v.cv * v.imp,
-        label: "Additional Orders / Yr",
-        unit: "orders",
-      },
-      kpi: {
-        fn: (v) => v.imp,
-        label: "Conversion Rate Improvement",
-        unit: "%",
-      },
-      steps: [
-        {
-          id: "s1",
-          label: "Revenue Impact",
-          fields: [
-            { k: "qt",  l: "Monthly Quotes / Leads",           d: 20000, u: "n",  s: "input" },
-            { k: "val", l: "Avg Order Value",                  d: 5000,  u: "$",  s: "input" },
-            { k: "cv",  l: "Current Conversion Rate",          d: 0.08,  u: "%",  s: "input" },
-            { k: "imp", l: "Conversion Improvement",           d: 0.15,  u: "%",  s: "assumption" },
-            { k: "m",   l: "Margin",                           d: 0.12,  u: "%",  s: "assumption" },
-          ],
-          fn: (v) => v.qt * 12 * v.val * v.cv * v.imp * v.m,
-          ft: "Quotes × 12 × Order Value × CVR × Improvement × Margin",
-          rl: "Annual Profit Impact (100%)",
-          ru: "$",
-          fin: true,
-        },
-      ],
-    },
-
-    // -----------------------------------------------------------------------
-    // 2. Digital Adoption & Self-Service
-    // -----------------------------------------------------------------------
-    {
-      id: "mpd",
-      name: "Digital Adoption & Self-Service",
-      cat: "Cost Savings",
-      sol: ["analytics", "guides", "replay"],
-      desc: "Accelerate digital self-service adoption to deflect costly manual interactions from dealers and customers.",
-      ifThen: "If Amplitude accelerates {company}'s digital self-service adoption, deflecting {rate} of costly manual interactions, {company} can save {value} annually while improving dealer and customer satisfaction.",
-      benchmarkNote: "Digital self-service costs $0.10-$1 vs $10-$25 for rep-assisted; Guides reduces support friction",
-      ops: {
-        fn: (v) => v.inter * v.df * 12,
-        label: "Interactions Deflected Annually",
-        unit: "interactions",
-      },
-      kpi: {
-        fn: (v) => v.df,
-        label: "Digital Deflection Rate",
-        unit: "%",
-      },
-      steps: [
-        {
-          id: "s1",
-          label: "Deflection Savings",
-          fields: [
-            { k: "inter", l: "Monthly Manual Interactions",    d: 50000, u: "n",  s: "input" },
-            { k: "cost",  l: "Cost / Interaction",             d: 15,    u: "$",  s: "input" },
-            { k: "df",    l: "Digital Deflection Rate",        d: 0.10,  u: "%",  s: "assumption" },
-          ],
-          fn: (v) => v.inter * v.cost * v.df * 12,
-          ft: "Interactions × Cost × Deflection Rate × 12",
-          rl: "Annual Deflection Savings (100%)",
-          ru: "$",
-          fin: true,
-        },
-      ],
-    },
-
-    // -----------------------------------------------------------------------
-    // 3. Productivity
-    // -----------------------------------------------------------------------
-    {
-      id: "mpp",
-      name: "Productivity & Efficiency",
-      cat: "Cost Savings",
-      sol: ["analytics", "global_agent"],
-      desc: "Reduce manual analytics burden for operations, product, and commercial teams.",
-      ifThen: "With Amplitude, {ftes} of {company}'s operations and commercial analytics teams spend {rate} less time on manual data work, recapturing {value} in annual capacity.",
-      benchmarkNote: "Forrester TEI 2023: 50% reduction in ad-hoc data requests",
-      ops: {
-        fn: (v) => v.ftes * v.pw * v.imp * 2080,
-        label: "Hours Recaptured Annually",
-        unit: "hours",
-      },
-      kpi: {
-        fn: (v) => v.pw * v.imp,
-        label: "Productivity Improvement",
-        unit: "%",
-      },
-      steps: [
-        {
-          id: "s1",
-          label: "Productivity Value",
-          fields: [
-            { k: "ftes", l: "FTEs Impacted",           d: 15,     u: "FTEs", s: "input" },
-            { k: "sal",  l: "Annual Salary + Benefits", d: 130000, u: "$",    s: "assumption" },
-            { k: "pw",   l: "% of Work Impacted",       d: 0.08,   u: "%",    s: "assumption" },
-            { k: "imp",  l: "Productivity Improvement", d: 0.80,   u: "%",    s: "assumption" },
-            { k: "va",   l: "Value Add Rate",           d: 0.50,   u: "%",    s: "assumption" },
+            { k: "va",   l: "Value Add Rate",           d: 0.60,   u: "%",    s: "assumption", n: "Forrester TEI standard: 60% of recaptured time redirected to billable work" },
           ],
           fn: (v) => v.sal * v.pw * v.imp * v.va * v.ftes,
           ft: "Salary × % Work × Improvement × Value Add × FTEs",
@@ -1501,6 +1525,7 @@ const LIB = {
   ],
 
 };
+
 
 // ---------------------------------------------------------------------------
 // Named exports

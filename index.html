@@ -1350,7 +1350,7 @@
     // -------------------------------------------------------------------------
     // Tab: Calculator
     // -------------------------------------------------------------------------
-    function TabCalculator({ industry, model, inputs, setInputs, enabled, setEnabled, aiEnabled, setAiEnabled, customerMode, lockedFields, activeLens, company, globalAiEnabled }) {
+    function TabCalculator({ industry, model, inputs, setInputs, enabled, setEnabled, aiEnabled, setAiEnabled, customerMode, lockedFields, activeLens, company, globalAiEnabled, ucSolutions, handleSolToggle }) {
       const ucs = LIB[industry] || [];
 
       function toggleEnabled(ucId) {
@@ -2323,6 +2323,8 @@
                 activeLens={activeLens}
                 company={company}
                 globalAiEnabled={globalAiEnabled}
+                ucSolutions={ucSolutions}
+                handleSolToggle={handleSolToggle}
               />
             </div>
 

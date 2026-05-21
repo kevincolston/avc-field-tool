@@ -991,7 +991,7 @@
     const { INDUSTRIES, SOLUTIONS, DEFAULT_MODEL, THEMES, LIB, fC, fN, fP, tyCalc, addTotals, generateNarrative } = window.__AVC__;
 
     const EMPTY_TOTALS = { y1l:0, y1h:0, y2l:0, y2h:0, y3l:0, y3h:0, tl:0, th:0 };
-    const LS_KEY = 'avc_state_v2';
+    const LS_KEY = 'avc_state_v3';
 
     // Non-AI solutions for display
     const NON_AI_SOLUTIONS = SOLUTIONS.filter(s => !s.ai && s.id !== 'pro_services');
@@ -1007,10 +1007,15 @@
     function loadState() {
       try {
         const raw = localStorage.getItem(LS_KEY);
-        if (raw) return JSON.parse(raw);
-        // Try legacy key
-        const legacy = localStorage.getItem('avc_state_v1');
-        if (legacy) return JSON.parse(legacy);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          // Guard: discard saved industry if it no longer exists in INDUSTRIES
+          const validIds = INDUSTRIES.map(i => i.id);
+          if (parsed.industry && !validIds.includes(parsed.industry)) {
+            parsed.industry = 'retail';
+          }
+          return parsed;
+        }
       } catch(e) {}
       return null;
     }
